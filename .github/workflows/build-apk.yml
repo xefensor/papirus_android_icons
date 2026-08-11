@@ -71,6 +71,35 @@ jobs:
     - name: Generate icon pack resources
       run: make VALIDATE=false build
 
+    - name: Apply user test mapping aliases
+      run: |
+        python3 - <<'PY'
+        from pathlib import Path
+
+        path = Path('app/src/main/res/xml/appfilter.xml')
+        text = path.read_text()
+        aliases = [
+            ('cz.nic.mobiledatovka/org.qtproject.qt.android.bindings.QtActivity', 'apps_datovka'),
+            ('org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppRetro2004', 'apps_fennec'),
+            ('com.fitbit.FitbitMobile/com.fitbit.HealthBrandedAlias', 'apps_fitbit'),
+            ('org.kde.kdeconnect_tp/org.kde.kdeconnect.ui.MainActivity', 'apps_kdeconnect'),
+            ('de.blinkt.openvpn/de.blinkt.openvpn.activities.MainActivity', 'apps_openvpn'),
+            ('com.github.muellerma.coffee/com.github.muellerma.coffee.activities.MainActivity', 'apps_caffeine'),
+            ('com.google.android.apps.tips/com.google.android.apps.tips.fortnite.p8', 'google_pixel_tipps'),
+            ('de.ph1b.audiobook/voice.app.features.MainActivity', 'apps_voice_audiobook_player'),
+        ]
+        additions = []
+        for component, drawable in aliases:
+            if component not in text:
+                additions.append(f'\t<item component="ComponentInfo{{{component}}}" drawable="{drawable}"/>')
+        if additions:
+            text = text.replace('</resources>', '\n'.join(additions) + '\n</resources>')
+            path.write_text(text)
+        print(f'Added {len(additions)} user-test mapping aliases')
+        for line in additions:
+            print(line)
+        PY
+
     - name: Verify generated icon bitmaps
       run: |
         svg_count=$(find src -maxdepth 1 -name '*.svg' | wc -l)
