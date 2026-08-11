@@ -1,18 +1,8 @@
 #!/usr/bin/env python3
 """Safely extend Papirus Android component mappings from other icon packs.
 
-The importer deliberately does not guess icon matches from app names. Instead it
-uses mapping overlap:
-
-1. Read Papirus' existing component -> drawable mapping from data.json.
-2. Group an external appfilter.xml by its drawable.
-3. If components in one external drawable group overlap exactly one unambiguous
-   Papirus drawable, infer that the whole external group represents that icon.
-4. Add only previously unknown components from that unambiguous group.
-
-Some legacy Papirus mappings assign the same component to multiple drawables.
-Those components are preserved but ignored as inference evidence, so existing
-ambiguity cannot teach the importer a new potentially-wrong mapping.
+Uses only trusted Papirus mappings as anchors. Previously imported mappings are
+tracked separately and never become new inference evidence, preventing cascades.
 """
 
 from __future__ import annotations
@@ -26,7 +16,9 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Iterable
 
-DEFAULT_DB = Path(__file__).resolve().parent.parent / "data.json"
+ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_DB = ROOT / "data.json"
+DEFAULT_PROVENANCE = ROOT / "external-mappings.json"
 
 SOURCES = {
     "arcticons": "https://raw.githubusercontent.com/Arcticons-Team/Arcticons/main/app/src/main/res/xml/appfilter.xml",
@@ -49,24 +41,31 @@ def load_database(path: Path) -> dict[str, list[str]]:
     return data
 
 
+def load_provenance(path: Path) -> dict:
+    if not path.exists():
+        return {"version": 1, "components": {}}
+    with path.open("r", encoding="utf-8") as handle:
+        data = json.load(handle)
+    if not isinstance(data, dict) or not isinstance(data.get("components", {}), dict):
+        raise ValueError(f"{path} must contain an object with a components object")
+    data.setdefault("version", 1)
+    data.setdefault("components", {})
+    return data
+
+
 def reverse_database(data: dict[str, list[str]]) -> dict[str, set[str]]:
     result: dict[str, set[str]] = defaultdict(set)
-
     for drawable, components in data.items():
         if not isinstance(components, list):
             raise ValueError(f"{drawable!r} must map to a list")
         for component in components:
             result[normalize_component(component)].add(drawable)
-
     return dict(result)
 
 
 def read_source(source: str) -> bytes:
     if source.startswith(("https://", "http://")):
-        request = urllib.request.Request(
-            source,
-            headers={"User-Agent": "papirus-android-mapping-sync/1.0"},
-        )
+        request = urllib.request.Request(source, headers={"User-Agent": "papirus-android-mapping-sync/1.0"})
         with urllib.request.urlopen(request, timeout=60) as response:
             return response.read()
     return Path(source).read_bytes()
@@ -75,17 +74,14 @@ def read_source(source: str) -> bytes:
 def parse_appfilter(content: bytes) -> dict[str, set[str]]:
     root = ET.fromstring(content)
     groups: dict[str, set[str]] = defaultdict(set)
-
     for item in root.iter("item"):
         component = item.attrib.get("component")
         drawable = item.attrib.get("drawable")
         if not component or not drawable:
             continue
         normalized = normalize_component(component)
-        if "/" not in normalized:
-            continue
-        groups[drawable].add(normalized)
-
+        if "/" in normalized:
+            groups[drawable].add(normalized)
     return groups
 
 
@@ -98,7 +94,6 @@ def selected_sources(names: Iterable[str], custom_sources: list[str]) -> list[tu
                     selected.append((source_name, source_url))
         else:
             selected.append((name, SOURCES[name]))
-
     for index, source in enumerate(custom_sources, start=1):
         selected.append((f"custom-{index}", source))
     return selected
@@ -106,75 +101,57 @@ def selected_sources(names: Iterable[str], custom_sources: list[str]) -> list[tu
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--db", type=Path, default=DEFAULT_DB, help="Path to data.json")
-    parser.add_argument(
-        "--source",
-        action="append",
-        choices=[*SOURCES.keys(), "all"],
-        default=[],
-        help="Known mapping source; may be repeated (default: all)",
-    )
-    parser.add_argument(
-        "--appfilter",
-        action="append",
-        default=[],
-        metavar="URL_OR_FILE",
-        help="Additional appfilter.xml URL or local path",
-    )
-    parser.add_argument(
-        "--write",
-        action="store_true",
-        help="Write unambiguous new mappings to data.json (default is dry-run)",
-    )
-    parser.add_argument(
-        "--report-unresolved",
-        action="store_true",
-        help="Print external drawable groups that have no Papirus overlap",
-    )
+    parser.add_argument("--db", type=Path, default=DEFAULT_DB)
+    parser.add_argument("--provenance", type=Path, default=DEFAULT_PROVENANCE)
+    parser.add_argument("--source", action="append", choices=[*SOURCES.keys(), "all"], default=[])
+    parser.add_argument("--appfilter", action="append", default=[], metavar="URL_OR_FILE")
+    parser.add_argument("--write", action="store_true")
+    parser.add_argument("--report-unresolved", action="store_true")
     args = parser.parse_args()
 
-    source_names = args.source or ["all"]
-    sources = selected_sources(source_names, args.appfilter)
-
+    sources = selected_sources(args.source or ["all"], args.appfilter)
     data = load_database(args.db)
+    provenance = load_provenance(args.provenance)
+    imported_components = set(provenance["components"])
     reverse = reverse_database(data)
+
+    trusted_reverse = {
+        component: next(iter(targets))
+        for component, targets in reverse.items()
+        if len(targets) == 1 and component not in imported_components
+    }
     ambiguous_existing = {component for component, targets in reverse.items() if len(targets) > 1}
 
-    additions: dict[str, set[str]] = defaultdict(set)
-    conflicts: list[tuple[str, str, list[str]]] = []
+    proposals: dict[str, set[str]] = defaultdict(set)
+    proposal_sources: dict[str, set[str]] = defaultdict(set)
+    group_conflicts: list[tuple[str, str, list[str]]] = []
     unresolved = 0
     learned_groups = 0
 
     print(
         f"Papirus: {len(data)} icons, {len(reverse)} unique components, "
-        f"{len(ambiguous_existing)} existing ambiguous components"
+        f"{len(trusted_reverse)} trusted anchors, {len(imported_components)} external mappings, "
+        f"{len(ambiguous_existing)} legacy ambiguous components"
     )
 
     for source_name, source in sources:
         print(f"\n[{source_name}] reading {source}")
         groups = parse_appfilter(read_source(source))
-        source_additions = 0
-        source_learned = 0
-        source_conflicts = 0
-        source_unresolved = 0
+        source_proposals = source_learned = source_conflicts = source_unresolved = 0
 
         for external_drawable, components in groups.items():
-            targets: set[str] = set()
-            for component in components:
-                known_targets = reverse.get(component)
-                if known_targets and len(known_targets) == 1:
-                    targets.update(known_targets)
-
+            targets = {trusted_reverse[c] for c in components if c in trusted_reverse}
             if len(targets) == 1:
                 target = next(iter(targets))
                 source_learned += 1
                 learned_groups += 1
                 for component in components:
                     if component not in reverse:
-                        additions[target].add(component)
-                        source_additions += 1
+                        proposals[component].add(target)
+                        proposal_sources[component].add(source_name)
+                        source_proposals += 1
             elif len(targets) > 1:
-                conflicts.append((source_name, external_drawable, sorted(targets)))
+                group_conflicts.append((source_name, external_drawable, sorted(targets)))
                 source_conflicts += 1
             else:
                 unresolved += 1
@@ -183,10 +160,17 @@ def main() -> int:
                     print(f"  unresolved: {external_drawable} ({len(components)} components)")
 
         print(
-            f"  groups={len(groups)}, inferred={source_learned}, "
-            f"new-components={source_additions}, conflicts={source_conflicts}, "
-            f"unresolved={source_unresolved}"
+            f"  groups={len(groups)}, inferred={source_learned}, proposals={source_proposals}, "
+            f"conflicts={source_conflicts}, unresolved={source_unresolved}"
         )
+
+    additions: dict[str, set[str]] = defaultdict(set)
+    proposal_conflicts: dict[str, set[str]] = {}
+    for component, targets in proposals.items():
+        if len(targets) == 1:
+            additions[next(iter(targets))].add(component)
+        else:
+            proposal_conflicts[component] = targets
 
     unique_additions = sum(len(values) for values in additions.values())
     print(
@@ -194,32 +178,39 @@ def main() -> int:
         f"{len(additions)} Papirus icons from {learned_groups} inferred groups."
     )
 
-    if conflicts:
-        print(f"Skipped {len(conflicts)} ambiguous external groups:")
-        for source_name, external_drawable, targets in conflicts[:20]:
+    if group_conflicts:
+        print(f"Skipped {len(group_conflicts)} ambiguous external drawable groups.")
+        for source_name, external_drawable, targets in group_conflicts[:20]:
             print(f"  {source_name}:{external_drawable} -> {', '.join(targets)}")
-        if len(conflicts) > 20:
-            print(f"  ... and {len(conflicts) - 20} more")
+    if proposal_conflicts:
+        print(f"Skipped {len(proposal_conflicts)} new components proposed for multiple Papirus icons.")
+        for component, targets in list(sorted(proposal_conflicts.items()))[:20]:
+            print(f"  {component} -> {', '.join(sorted(targets))}")
 
     if not args.write:
-        print("Dry-run only. Re-run with --write to update data.json.")
+        print("Dry-run only. Re-run with --write to update data.json and provenance.")
         return 0
 
     for drawable, components in additions.items():
         existing = {normalize_component(c) for c in data[drawable]}
         existing.update(components)
         data[drawable] = sorted(existing)
+        for component in components:
+            provenance["components"][component] = {
+                "drawable": drawable,
+                "sources": sorted(proposal_sources[component]),
+            }
 
     with args.db.open("w", encoding="utf-8") as handle:
         json.dump(data, handle, indent=2, sort_keys=True)
         handle.write("\n")
+    with args.provenance.open("w", encoding="utf-8") as handle:
+        json.dump(provenance, handle, indent=2, sort_keys=True)
+        handle.write("\n")
 
-    print(f"Updated {args.db} with {unique_additions} mappings.")
+    print(f"Updated data and provenance with {unique_additions} mappings.")
     if unresolved:
-        print(
-            f"Left {unresolved} external drawable groups unresolved; these need a "
-            "different matching strategy or an icon request."
-        )
+        print(f"Left {unresolved} external drawable groups unresolved.")
     return 0
 
 
