@@ -8,9 +8,65 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
+  persist-verified-mappings:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout PR branch
+      uses: actions/checkout@v5
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
+
+    - name: Persist verified device mappings
+      run: |
+        python3 - <<'PY'
+        import json
+        from pathlib import Path
+
+        aliases = {
+            'apps_datovka': 'cz.nic.mobiledatovka/org.qtproject.qt.android.bindings.QtActivity',
+            'apps_fennec': 'org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppRetro2004',
+            'apps_fitbit': 'com.fitbit.FitbitMobile/com.fitbit.HealthBrandedAlias',
+            'apps_kdeconnect': 'org.kde.kdeconnect_tp/org.kde.kdeconnect.ui.MainActivity',
+            'apps_openvpn': 'de.blinkt.openvpn/de.blinkt.openvpn.activities.MainActivity',
+            'apps_caffeine': 'com.github.muellerma.coffee/com.github.muellerma.coffee.activities.MainActivity',
+            'google_pixel_tipps': 'com.google.android.apps.tips/com.google.android.apps.tips.fortnite.p8',
+            'apps_voice_audiobook_player': 'de.ph1b.audiobook/voice.app.features.MainActivity',
+        }
+
+        path = Path('data.json')
+        db = json.loads(path.read_text())
+        changed = []
+        for drawable, component in aliases.items():
+            if drawable not in db:
+                raise SystemExit(f'Missing expected drawable key: {drawable}')
+            if component not in db[drawable]:
+                db[drawable].append(component)
+                changed.append((drawable, component))
+        if changed:
+            path.write_text(json.dumps(db, indent=2, ensure_ascii=False) + '\n')
+        print(f'Persisted {len(changed)} verified mappings')
+        for drawable, component in changed:
+            print(f'{drawable}: {component}')
+        PY
+        DB_FILE=./data.json APPFILTER_FILE=app/src/main/assets/appfilter.xml \
+          python3 scripts/generate_appfilter.py
+
+    - name: Commit verified mappings
+      run: |
+        if git diff --quiet -- data.json app/src/main/assets/appfilter.xml; then
+          echo 'Mappings already persisted; nothing to commit.'
+          exit 0
+        fi
+        git config user.name 'github-actions[bot]'
+        git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+        git add data.json app/src/main/assets/appfilter.xml
+        git commit -m 'Add verified device component mappings'
+        git push origin HEAD:${{ github.event.pull_request.head.ref }}
+
   artwork-audit:
     runs-on: ubuntu-latest
 
@@ -70,35 +126,6 @@ jobs:
 
     - name: Generate icon pack resources
       run: make VALIDATE=false build
-
-    - name: Apply user test mapping aliases
-      run: |
-        python3 - <<'PY'
-        from pathlib import Path
-
-        path = Path('app/src/main/res/xml/appfilter.xml')
-        text = path.read_text()
-        aliases = [
-            ('cz.nic.mobiledatovka/org.qtproject.qt.android.bindings.QtActivity', 'apps_datovka'),
-            ('org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppRetro2004', 'apps_fennec'),
-            ('com.fitbit.FitbitMobile/com.fitbit.HealthBrandedAlias', 'apps_fitbit'),
-            ('org.kde.kdeconnect_tp/org.kde.kdeconnect.ui.MainActivity', 'apps_kdeconnect'),
-            ('de.blinkt.openvpn/de.blinkt.openvpn.activities.MainActivity', 'apps_openvpn'),
-            ('com.github.muellerma.coffee/com.github.muellerma.coffee.activities.MainActivity', 'apps_caffeine'),
-            ('com.google.android.apps.tips/com.google.android.apps.tips.fortnite.p8', 'google_pixel_tipps'),
-            ('de.ph1b.audiobook/voice.app.features.MainActivity', 'apps_voice_audiobook_player'),
-        ]
-        additions = []
-        for component, drawable in aliases:
-            if component not in text:
-                additions.append(f'\t<item component="ComponentInfo{{{component}}}" drawable="{drawable}"/>')
-        if additions:
-            text = text.replace('</resources>', '\n'.join(additions) + '\n</resources>')
-            path.write_text(text)
-        print(f'Added {len(additions)} user-test mapping aliases')
-        for line in additions:
-            print(line)
-        PY
 
     - name: Verify generated icon bitmaps
       run: |
