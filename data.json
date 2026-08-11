@@ -1059,7 +1059,8 @@
     "moe.zhs.caffeine/moe.zhs.caffeine.MainActivity",
     "com.github.muellerma.coffee/com.github.muellerma.coffee.MainActivity",
     "com.hifnawy.caffeinate/com.hifnawy.caffeinate.view.MainActivity",
-    "moe.zhs.caffeine/moe.zhs.caffeine.SettingsActivity"
+    "moe.zhs.caffeine/moe.zhs.caffeine.SettingsActivity",
+    "com.github.muellerma.coffee/com.github.muellerma.coffee.activities.MainActivity"
   ],
   "apps_caixa": [
     "br.com.gabba.Caixa/br.com.gabba.Caixa.SplashActivity",
@@ -1547,7 +1548,8 @@
     "com.lotusflare.datasensor/com.lotusflare.datasensor.WelcomeActivity"
   ],
   "apps_datovka": [
-    "cz.nic.mobiledatovka/org.qtproject.qt5.android.bindings.QtActivity"
+    "cz.nic.mobiledatovka/org.qtproject.qt5.android.bindings.QtActivity",
+    "cz.nic.mobiledatovka/org.qtproject.qt.android.bindings.QtActivity"
   ],
   "apps_davx_5": [
     "at.bitfire.davdroid/at.bitfire.davdroid.ui.AccountsActivity"
@@ -2330,7 +2332,8 @@
     "org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppSolidLight",
     "org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppSolidPurple",
     "org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppSolidPurpleDark",
-    "org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppSolidRed"
+    "org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppSolidRed",
+    "org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppRetro2004"
   ],
   "apps_fidelity_investments": [
     "com.fidelity.android/com.fidelity.android.activity.AppConfigLoaderActivity"
@@ -2432,7 +2435,8 @@
     "com.fitbit.FitbitMobile/com.fitbit.FirstActivity",
     "com.fitbit.FitbitMobile/com.fitbit.FitbitBrandedAlias",
     "com.fitbit.FitbitMobile/com.fitbit.onboarding.landing.LandingActivity",
-    "com.fitbit.FitbitMobile/com.qihoo.util.StartActivity"
+    "com.fitbit.FitbitMobile/com.qihoo.util.StartActivity",
+    "com.fitbit.FitbitMobile/com.fitbit.HealthBrandedAlias"
   ],
   "apps_fite_tv": [
     "com.flipps.fitetv/com.bianor.ams.MainActivity"
@@ -3547,7 +3551,8 @@
     "com.kms.free/com.kms.free.PermissionsActivityLauncher"
   ],
   "apps_kdeconnect": [
-    "org.kde.kdeconnect_tp/org.kde.kdeconnect.UserInterface.MainActivity"
+    "org.kde.kdeconnect_tp/org.kde.kdeconnect.UserInterface.MainActivity",
+    "org.kde.kdeconnect_tp/org.kde.kdeconnect.ui.MainActivity"
   ],
   "apps_kdv": [
     "com.magonline.app/com.magdv.general.presentation.main.MainActivity"
@@ -5329,7 +5334,8 @@
   ],
   "apps_openvpn": [
     "net.openvpn.openvpn/net.openvpn.openvpn.OpenVPNClient",
-    "net.openvpn.openvpn/net.openvpn.unified.MainActivity"
+    "net.openvpn.openvpn/net.openvpn.unified.MainActivity",
+    "de.blinkt.openvpn/de.blinkt.openvpn.activities.MainActivity"
   ],
   "apps_openweather": [
     "uk.co.openweather/uk.co.openweather.SplashActivity",
@@ -6632,8 +6638,8 @@
     "com.santander.one.pl.release/es.bancosantander.apps.mobile.android.activities.PublicActivity",
     "com.santanderconsumerbank.nl/com.santander.scbelgium.ui.splash.SplashActivity",
     "com.sovereign.santander/com.santander.us.splash.view.SplashActivity",
-    "com.sovereign.santander/kd.\u1ad8\u1ace\u1ac9",
-    "com.sovereign.santander/kd.\u1adb\u0865\u086d",
+    "com.sovereign.santander/kd.᫘ᫎ᫉",
+    "com.sovereign.santander/kd.᫛ࡥ࡭",
     "de.santander.presentation/de.santander.presentation.launcher_80412c2814728a1e830d4d0e7ed57be2ead1e4e16395ee19a258af23c1d761a6",
     "de.santander.presentation/de.santander.presentation.launcher_831074a3b7d145936d0f5f6bd9d22c4dab85da4fe3b97b6d3be4262839725fb1",
     "es.bancosantander.apps/es.bancosantander.apps.mobile.android.activities.PublicActivity",
@@ -8605,7 +8611,8 @@
     "za.co.vodacom.vodapay/za.co.vodacom.vodapay.onboarding.splash.SplashActivity"
   ],
   "apps_voice_audiobook_player": [
-    "de.ph1b.audiobook/de.ph1b.audiobook.features.MainActivity"
+    "de.ph1b.audiobook/de.ph1b.audiobook.features.MainActivity",
+    "de.ph1b.audiobook/voice.app.features.MainActivity"
   ],
   "apps_vplay": [
     "com.vplay.tv/com.vplay.tv.ui.WebActivity"
@@ -8633,7 +8640,7 @@
     "app.subwallet.mobile/app.subwallet.mobile.MainActivity",
     "arichain.app.ari.wallet/arichain.app.ari.wallet.MainActivity",
     "at.gv.brz.wallet/at.gv.brz.wallet.MainActivity",
-    "at.psa.app.oberbank/vv.\u4e4a\u03bf\u0e19",
+    "at.psa.app.oberbank/vv.乊οน",
     "au.com.walletwizard.ccg.wwapp/au.com.walletwizard.ccg.wwapp.MainActivity",
     "bd.com.sonalibank.sw/bd.com.sonalibank.sw.SplashActivity",
     "bd.gov.nidw.nid.wallet/bd.gov.nidw.nid.wallet.activities.SplashActivity",
@@ -11166,7 +11173,8 @@
     "com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity"
   ],
   "google_pixel_tipps": [
-    "com.google.android.apps.tips/com.google.android.apps.tips.TipsMain"
+    "com.google.android.apps.tips/com.google.android.apps.tips.TipsMain",
+    "com.google.android.apps.tips/com.google.android.apps.tips.fortnite.p8"
   ],
   "google_play": [
     "com.android.vending/com.android.vending.AssetBrowserActivity"

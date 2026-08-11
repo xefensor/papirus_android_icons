@@ -590,6 +590,7 @@
 	<item component="ComponentInfo{com.github.muellerma.coffee/com.github.muellerma.coffee.MainActivity}" drawable="apps_caffeine"/>
 	<item component="ComponentInfo{com.hifnawy.caffeinate/com.hifnawy.caffeinate.view.MainActivity}" drawable="apps_caffeine"/>
 	<item component="ComponentInfo{moe.zhs.caffeine/moe.zhs.caffeine.SettingsActivity}" drawable="apps_caffeine"/>
+	<item component="ComponentInfo{com.github.muellerma.coffee/com.github.muellerma.coffee.activities.MainActivity}" drawable="apps_caffeine"/>
 	<item component="ComponentInfo{br.com.gabba.Caixa/br.com.gabba.Caixa.SplashActivity}" drawable="apps_caixa"/>
 	<item component="ComponentInfo{br.com.gabba.Caixa/br.bXVa58.zENWD9.vqY7v4.ui.leeqD3.dc76z8}" drawable="apps_caixa"/>
 	<item component="ComponentInfo{br.com.gabba.Caixa/br.com.gabba.Caixa.presentation.SplashActivity}" drawable="apps_caixa"/>
@@ -864,6 +865,7 @@
 	<item component="ComponentInfo{com.talzz.datadex/com.talzz.datadex.activities.main.MainActivity}" drawable="apps_datadex"/>
 	<item component="ComponentInfo{com.lotusflare.datasensor/com.lotusflare.datasensor.WelcomeActivity}" drawable="apps_dataeye"/>
 	<item component="ComponentInfo{cz.nic.mobiledatovka/org.qtproject.qt5.android.bindings.QtActivity}" drawable="apps_datovka"/>
+	<item component="ComponentInfo{cz.nic.mobiledatovka/org.qtproject.qt.android.bindings.QtActivity}" drawable="apps_datovka"/>
 	<item component="ComponentInfo{at.bitfire.davdroid/at.bitfire.davdroid.ui.AccountsActivity}" drawable="apps_davx_5"/>
 	<item component="ComponentInfo{org.deadbeef.android/org.deadbeef.android.Deadbeef}" drawable="apps_deadbeef"/>
 	<item component="ComponentInfo{deezer.android.app/com.deezer.android.ui.activity.LauncherActivity}" drawable="apps_deezer"/>
@@ -1385,6 +1387,7 @@
 	<item component="ComponentInfo{org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppSolidPurple}" drawable="apps_fennec"/>
 	<item component="ComponentInfo{org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppSolidPurpleDark}" drawable="apps_fennec"/>
 	<item component="ComponentInfo{org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppSolidRed}" drawable="apps_fennec"/>
+	<item component="ComponentInfo{org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppRetro2004}" drawable="apps_fennec"/>
 	<item component="ComponentInfo{com.fidelity.android/com.fidelity.android.activity.AppConfigLoaderActivity}" drawable="apps_fidelity_investments"/>
 	<item component="ComponentInfo{com.figma.mirror/com.figma.mirror.ViewerActivity}" drawable="apps_figma"/>
 	<item component="ComponentInfo{com.figma.mirror/com.figma.figma.MainActivity}" drawable="apps_figma"/>
@@ -1461,6 +1464,7 @@
 	<item component="ComponentInfo{com.fitbit.FitbitMobile/com.fitbit.FitbitBrandedAlias}" drawable="apps_fitbit"/>
 	<item component="ComponentInfo{com.fitbit.FitbitMobile/com.fitbit.onboarding.landing.LandingActivity}" drawable="apps_fitbit"/>
 	<item component="ComponentInfo{com.fitbit.FitbitMobile/com.qihoo.util.StartActivity}" drawable="apps_fitbit"/>
+	<item component="ComponentInfo{com.fitbit.FitbitMobile/com.fitbit.HealthBrandedAlias}" drawable="apps_fitbit"/>
 	<item component="ComponentInfo{com.flipps.fitetv/com.bianor.ams.MainActivity}" drawable="apps_fite_tv"/>
 	<item component="ComponentInfo{com.fitifyworkouts.bodyweight.workoutapp/com.fitifyapps.fitify.ui.onboarding.OnboardingActivity}" drawable="apps_fitify"/>
 	<item component="ComponentInfo{com.fitifyworkouts.bodyweight.workoutapp/com.fitifyapps.fitify.ui.onboarding.WorkoutsOnboardingActivity}" drawable="apps_fitify"/>
@@ -2072,6 +2076,7 @@
 	<item component="ComponentInfo{com.kms.free/com.kms.KisMainActivity}" drawable="apps_kaspersky_internet_security"/>
 	<item component="ComponentInfo{com.kms.free/com.kms.free.PermissionsActivityLauncher}" drawable="apps_kaspersky_internet_security"/>
 	<item component="ComponentInfo{org.kde.kdeconnect_tp/org.kde.kdeconnect.UserInterface.MainActivity}" drawable="apps_kdeconnect"/>
+	<item component="ComponentInfo{org.kde.kdeconnect_tp/org.kde.kdeconnect.ui.MainActivity}" drawable="apps_kdeconnect"/>
 	<item component="ComponentInfo{com.magonline.app/com.magdv.general.presentation.main.MainActivity}" drawable="apps_kdv"/>
 	<item component="ComponentInfo{keepass2android.keepass2android/md5f0702f468598c68ce18586502249fb40.KeePass}" drawable="apps_keepass2android"/>
 	<item component="ComponentInfo{keepass2android.keepass2android/md5b85ab5ea2545156b0f09600c184a5178.KeePass}" drawable="apps_keepass2android"/>
@@ -3096,6 +3101,7 @@
 	<item component="ComponentInfo{com.zdenekskrobak.openttdtimetabletools/com.zdenekskrobak.openttdtimetabletools.MainActivity}" drawable="apps_openttd"/>
 	<item component="ComponentInfo{net.openvpn.openvpn/net.openvpn.openvpn.OpenVPNClient}" drawable="apps_openvpn"/>
 	<item component="ComponentInfo{net.openvpn.openvpn/net.openvpn.unified.MainActivity}" drawable="apps_openvpn"/>
+	<item component="ComponentInfo{de.blinkt.openvpn/de.blinkt.openvpn.activities.MainActivity}" drawable="apps_openvpn"/>
 	<item component="ComponentInfo{uk.co.openweather/uk.co.openweather.SplashActivity}" drawable="apps_openweather"/>
 	<item component="ComponentInfo{uk.co.openweather/uk.co.openweather.MainActivity}" drawable="apps_openweather"/>
 	<item component="ComponentInfo{com.opera.browser/com.opera.Opera}" drawable="apps_opera"/>
@@ -5329,6 +5335,7 @@
 	<item component="ComponentInfo{za.co.vodacom.android.app/za.co.vodacom.android.app.MainActivity}" drawable="apps_vodafone"/>
 	<item component="ComponentInfo{za.co.vodacom.vodapay/za.co.vodacom.vodapay.onboarding.splash.SplashActivity}" drawable="apps_vodafone"/>
 	<item component="ComponentInfo{de.ph1b.audiobook/de.ph1b.audiobook.features.MainActivity}" drawable="apps_voice_audiobook_player"/>
+	<item component="ComponentInfo{de.ph1b.audiobook/voice.app.features.MainActivity}" drawable="apps_voice_audiobook_player"/>
 	<item component="ComponentInfo{com.vplay.tv/com.vplay.tv.ui.WebActivity}" drawable="apps_vplay"/>
 	<item component="ComponentInfo{com.notissimus.allinstruments.android/ru.handh.vseinstrumenti.ui.splash.SplashActivity}" drawable="apps_vseinstrumenti"/>
 	<item component="ComponentInfo{com.vsemayki.app/com.vsemayki.app.activities.MainActivity}" drawable="apps_vsemayki"/>
@@ -7038,6 +7045,7 @@
 	<item component="ComponentInfo{com.google.intelligence.sense/com.google.intelligence.sense.SenseApplication}" drawable="google_pixel_ambient_services"/>
 	<item component="ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity}" drawable="google_pixel_launcher"/>
 	<item component="ComponentInfo{com.google.android.apps.tips/com.google.android.apps.tips.TipsMain}" drawable="google_pixel_tipps"/>
+	<item component="ComponentInfo{com.google.android.apps.tips/com.google.android.apps.tips.fortnite.p8}" drawable="google_pixel_tipps"/>
 	<item component="ComponentInfo{com.android.vending/com.android.vending.AssetBrowserActivity}" drawable="google_play"/>
 	<item component="ComponentInfo{com.google.android.apps.books/com.google.android.apps.books.app.BooksActivity}" drawable="google_play_book"/>
 	<item component="ComponentInfo{com.google.android.play.games/com.google.android.gms.games.ui.destination.main.MainActivity}" drawable="google_play_game"/>
