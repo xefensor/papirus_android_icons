@@ -8,75 +8,49 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  external-proposal-audit:
+  mark-device-mappings-non-anchor:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
+    - name: Checkout PR branch
       uses: actions/checkout@v5
-    - name: Print mappings unlocked by verified device aliases
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
+
+    - name: Record verified device mappings as non-anchor provenance
       run: |
-        cp data.json /tmp/papirus-data.json
-        cp external-mappings.json /tmp/papirus-external-mappings.json
-        python3 scripts/sync_external_mappings.py \
-          --db /tmp/papirus-data.json \
-          --provenance /tmp/papirus-external-mappings.json \
-          --write >/tmp/sync-summary.txt
-        cat /tmp/sync-summary.txt
         python3 - <<'PY'
         import json
-        before = json.load(open('data.json'))
-        after = json.load(open('/tmp/papirus-data.json'))
-        print('\n=== PROPOSED MAPPINGS ===')
-        total = 0
-        for drawable in before:
-            old = set(before[drawable])
-            new = [c for c in after[drawable] if c not in old]
-            if not new:
-                continue
-            print(f'\n{drawable} ({len(new)} new)')
-            for component in new:
-                print(f'  {component}')
-                total += 1
-        print(f'\nTOTAL={total}')
+        from pathlib import Path
+
+        verified = {
+            'cz.nic.mobiledatovka/org.qtproject.qt.android.bindings.QtActivity': 'apps_datovka',
+            'org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppRetro2004': 'apps_fennec',
+            'com.fitbit.FitbitMobile/com.fitbit.HealthBrandedAlias': 'apps_fitbit',
+            'org.kde.kdeconnect_tp/org.kde.kdeconnect.ui.MainActivity': 'apps_kdeconnect',
+            'de.blinkt.openvpn/de.blinkt.openvpn.activities.MainActivity': 'apps_openvpn',
+            'com.github.muellerma.coffee/com.github.muellerma.coffee.activities.MainActivity': 'apps_caffeine',
+            'com.google.android.apps.tips/com.google.android.apps.tips.fortnite.p8': 'google_pixel_tipps',
+            'de.ph1b.audiobook/voice.app.features.MainActivity': 'apps_voice_audiobook_player',
+        }
+
+        path = Path('external-mappings.json')
+        provenance = json.loads(path.read_text())
+        components = provenance.setdefault('components', {})
+        changed = 0
+        for component, drawable in verified.items():
+            desired = {'drawable': drawable, 'sources': ['device-verified']}
+            if components.get(component) != desired:
+                components[component] = desired
+                changed += 1
+        path.write_text(json.dumps(provenance, indent=2, sort_keys=True) + '\n')
+        print(f'Recorded {changed} verified mappings as non-anchor provenance')
         PY
 
-  artwork-audit:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v5
-
-    - name: Validate maintenance scripts
-      run: python3 -m py_compile scripts/*.py
-
-    - name: Check desktop Papirus Android candidates
-      run: |
-        git clone --depth 1 --filter=blob:none --sparse \
-          https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git /tmp/papirus-icon-theme
-        git -C /tmp/papirus-icon-theme sparse-checkout set Papirus/64x64/apps
-        python3 scripts/sync_android_artwork.py /tmp/papirus-icon-theme --list
-
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v5
-
-    - name: Set up JDK
-      uses: actions/setup-java@v5
-      with:
-        distribution: 'temurin'
-        java-version: '17'
-
-    - name: Validate maintenance scripts
-      run: python3 -m py_compile scripts/*.py
-
-    - name: Validate external mapping sync is idempotent
+    - name: Verify external sync is idempotent after provenance update
       run: |
         cp data.json /tmp/papirus-data.json
         cp external-mappings.json /tmp/papirus-external-mappings.json
@@ -87,22 +61,67 @@ jobs:
         cmp data.json /tmp/papirus-data.json
         cmp external-mappings.json /tmp/papirus-external-mappings.json
 
+    - name: Commit provenance
+      run: |
+        if git diff --quiet -- external-mappings.json; then
+          echo 'Provenance already recorded.'
+          exit 0
+        fi
+        git config user.name 'github-actions[bot]'
+        git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+        git add external-mappings.json
+        git commit -m 'Keep verified device mappings out of inference anchors'
+        git push origin HEAD:${{ github.event.pull_request.head.ref }}
+
+  artwork-audit:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v5
+    - name: Validate maintenance scripts
+      run: python3 -m py_compile scripts/*.py
+    - name: Check desktop Papirus Android candidates
+      run: |
+        git clone --depth 1 --filter=blob:none --sparse \
+          https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git /tmp/papirus-icon-theme
+        git -C /tmp/papirus-icon-theme sparse-checkout set Papirus/64x64/apps
+        python3 scripts/sync_android_artwork.py /tmp/papirus-icon-theme --list
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v5
+    - name: Set up JDK
+      uses: actions/setup-java@v5
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+    - name: Validate maintenance scripts
+      run: python3 -m py_compile scripts/*.py
+    - name: Validate external mapping sync is idempotent
+      run: |
+        cp data.json /tmp/papirus-data.json
+        cp external-mappings.json /tmp/papirus-external-mappings.json
+        python3 scripts/sync_external_mappings.py \
+          --db /tmp/papirus-data.json \
+          --provenance /tmp/papirus-external-mappings.json \
+          --write
+        cmp data.json /tmp/papirus-data.json
+        cmp external-mappings.json /tmp/papirus-external-mappings.json
     - name: Validate tracked appfilter
       run: |
         DB_FILE=./data.json APPFILTER_FILE=/tmp/papirus-appfilter.xml \
           python3 scripts/generate_appfilter.py
         cmp app/src/main/assets/appfilter.xml /tmp/papirus-appfilter.xml
-
     - name: Install SVG renderer
       run: |
         if ! command -v inkscape >/dev/null; then
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends inkscape
         fi
-
     - name: Generate icon pack resources
       run: make VALIDATE=false build
-
     - name: Verify generated icon bitmaps
       run: |
         svg_count=$(find src -maxdepth 1 -name '*.svg' | wc -l)
@@ -110,19 +129,15 @@ jobs:
         echo "SVG icons: $svg_count"
         echo "Generated PNG icons: $png_count"
         test "$svg_count" -eq "$png_count"
-
     - name: Make gradlew executable
       run: chmod +x ./gradlew
-
     - name: Build release and installable test APKs
       run: ./gradlew assembleRelease assembleDebug
-
     - name: Upload release APK
       uses: actions/upload-artifact@v4
       with:
         name: app-release-apk
         path: app/build/outputs/apk/release/*.apk
-
     - name: Upload installable test APK
       uses: actions/upload-artifact@v4
       with:
