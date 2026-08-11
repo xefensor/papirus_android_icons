@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Leave empty if you don't want to show changelog date -->
-    <string name="changelog_date">20220220</string>
+    <string name="changelog_date">20260811</string>
 
-    <!-- Changelog support html formatting
-    * <b> for Bold
-    * <i> for Italic
-    * <u> for Underline
-    * <a href="linkUrl">Link Text</a> for links -->
     <string-array name="changelog">
-        <item>Added 102 icons</item>
+        <item>Maintained community fork identity and update links</item>
+        <item>Added 84 verified desktop Papirus icons</item>
+        <item>Refreshed thousands of Android component mappings</item>
+        <item>Added eight launcher component fixes verified on a real device</item>
+        <item>Improved CI to build and validate complete installable icon-pack APKs</item>
     </string-array>
 
 </resources>
