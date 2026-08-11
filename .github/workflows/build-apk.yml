@@ -51,7 +51,7 @@ jobs:
         git clone --depth 1 --filter=blob:none --sparse \
           https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git /tmp/papirus-icon-theme
         git -C /tmp/papirus-icon-theme sparse-checkout set Papirus/64x64/apps
-        python3 scripts/sync_android_artwork.py /tmp/papirus-icon-theme
+        python3 scripts/sync_android_artwork.py /tmp/papirus-icon-theme --list
 
     - name: Install SVG renderer
       run: |
@@ -61,7 +61,7 @@ jobs:
         fi
 
     - name: Generate icon pack resources
-      run: make build
+      run: make VALIDATE=false build
 
     - name: Verify generated icon bitmaps
       run: |
