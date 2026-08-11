@@ -33,6 +33,8 @@ Below launchers have been tested to be working successfully with Papirus Icon am
 
 Android-specific artwork in `src/` has priority over desktop artwork. Existing Android icons are therefore never overwritten merely because a similarly named icon exists in the desktop Papirus theme.
 
+## Desktop artwork sync
+
 The repository includes `scripts/sync_desktop_icons.py` for importing missing application artwork from `PapirusDevelopmentTeam/papirus-icon-theme`. Files imported by the script are recorded in `desktop-sync.json`, allowing later upstream updates to those imported files without taking ownership of manually maintained Android artwork.
 
 Example:
@@ -46,7 +48,36 @@ python3 scripts/sync_desktop_icons.py ../papirus-icon-theme \
 
 Desktop aliases/symlinks are currently skipped rather than duplicated. Normalized filename collisions are reported and must be reviewed manually.
 
-Artwork synchronization and Android app/component mapping are intentionally separate jobs: the desktop theme supplies Papirus artwork, while `data.json` remains the source for Android package/activity mappings. This lets us later import mappings from maintained Android icon projects without coupling them to artwork synchronization.
+## Android component mapping sync
+
+Artwork synchronization and Android app/component mapping are intentionally separate jobs. `data.json` remains the authoritative Papirus mapping database.
+
+`scripts/sync_external_mappings.py` can safely learn additional package/activity variants from actively maintained Android icon projects. The current built-in sources are Arcticons and Lawnicons.
+
+The mapping sync does **not** guess from app names. It groups each external pack by drawable and only learns a mapping when that external drawable already shares one or more known Android components with exactly one Papirus icon. All additional components in that unambiguous group can then be assigned to the same Papirus icon. Ambiguous groups are skipped.
+
+Dry-run both built-in sources:
+
+```bash
+python3 scripts/sync_external_mappings.py
+```
+
+Inspect one source:
+
+```bash
+python3 scripts/sync_external_mappings.py --source arcticons
+python3 scripts/sync_external_mappings.py --source lawnicons
+```
+
+Apply only unambiguous inferred mappings:
+
+```bash
+python3 scripts/sync_external_mappings.py --write
+make pretty
+make test
+```
+
+The existing in-app Icon Request feature remains the fallback for applications that cannot be resolved from upstream mapping overlap.
 
 # Install
 You can [download icon pack](https://www.pling.com/p/1662847/) directly from the Android browser or download on PC and send to phone via KDE Connect/Send Anywhere/Android File Transfer or adb.
