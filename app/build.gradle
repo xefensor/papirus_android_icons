@@ -52,9 +52,6 @@ java {
 
 dependencies {
     implementation 'com.github.Donnnno:candybar-foss:3.21.3'
-
-    // TODO: Remove `//` below to enable OneSignal
-    //implementation 'com.onesignal:OneSignal:[5.0.0, 5.99.99]'
 }
 
 // Code for automatically copying appfilter.xml and drawable.xml
