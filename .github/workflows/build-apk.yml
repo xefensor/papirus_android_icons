@@ -18,7 +18,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Set up JDK
       uses: actions/setup-java@v5
@@ -36,15 +36,18 @@ jobs:
       if: github.event_name == 'push' && github.event.head_commit.message == 'Run external mapping import'
       run: |
         python3 scripts/sync_external_mappings.py --write
-        git diff --stat -- data.json
-        git diff --numstat -- data.json
+        DB_FILE=./data.json APPFILTER_FILE=./app/src/main/res/xml/appfilter.xml \
+          python3 scripts/generate_appfilter.py
 
-        if git diff --quiet -- data.json; then
+        git diff --stat -- data.json external-mappings.json app/src/main/res/xml/appfilter.xml
+        git diff --numstat -- data.json external-mappings.json app/src/main/res/xml/appfilter.xml
+
+        if git diff --quiet -- data.json external-mappings.json app/src/main/res/xml/appfilter.xml; then
           echo "No new mappings to commit."
         else
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data.json
+          git add data.json external-mappings.json app/src/main/res/xml/appfilter.xml
           git commit -m "Sync external Android mappings"
           git push
         fi
