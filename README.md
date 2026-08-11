@@ -1,43 +1,45 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus_icons/master/preview.png" alt="preview"/>
+  <img src="preview.png" alt="Papirus Android preview"/>
 </p>
 
-# Papirus Icon Pack
-Popular Linux icon theme now on Android!
+# Papirus Icon Pack for Android
 
-This repository is a maintained community fork of the Papirus Android icon pack. The goal is to keep the Android pack current while continuing to reuse the actively maintained desktop Papirus artwork where it makes sense.
+Papirus for Android is a maintained community fork of the original Papirus Android icon pack. It keeps Android-specific artwork where it already exists and reuses actively maintained desktop Papirus artwork when the app identity can be verified safely.
 
-# Supported Launchers
-Below launchers have been tested to be working successfully with Papirus Icon among others. Feel free to add yours:
+This fork is maintained at `xefensor/papirus_android_icons`. The original Papirus project and its contributors remain credited; this repository does not claim authorship of inherited artwork.
 
-- Flick
-- Holo
-- Lawnchair
-- Lucid
-- Nova
-- Posidon
-- Smart
-- HiOS
-- _and many others..._
+## Features
 
-# Features
-- Fully Open Source
-- Pixel perfect
+- Fully open source
 - More than 2300 mapped icons
-- Inspired by Material design
-- Icon Request option
-- Check Update function
-- 8 Cloud Wallpapers
+- Android-specific Papirus artwork preserved
+- Verified desktop Papirus artwork sync
+- Arcticons and Lawnicons component-mapping assistance with false-positive protection
+- Real APK builds that generate and package all launcher PNG resources
+- Lawnchair, Nova and many other icon-pack compatible launchers
+- Included Papirus wallpapers
 
-# Maintenance
+## Install
 
-Android-specific artwork in `src/` has priority over desktop artwork. Existing Android icons are therefore never overwritten merely because a similarly named icon exists in the desktop Papirus theme.
+Releases are published through the repository's GitHub Releases page:
 
-## Desktop artwork sync
+`https://github.com/xefensor/papirus_android_icons/releases`
 
-The repository includes `scripts/sync_desktop_icons.py` for importing missing application artwork from `PapirusDevelopmentTeam/papirus-icon-theme`. Files imported by the script are recorded in `desktop-sync.json`, allowing later upstream updates to those imported files without taking ownership of manually maintained Android artwork.
+Development/test APKs are also produced by GitHub Actions for pull requests. Debug builds use a separate `.test` application ID so they can coexist with the normal maintained package.
 
-Example:
+## Icon requests
+
+The old email-based icon request endpoint from the abandoned Android package is intentionally disabled because it pointed to a previous maintainer's personal address. Missing apps can still be identified with CandyBar's missing-icon report and audited with the maintenance tooling in this repository.
+
+`scripts/audit_icon_request.py` accepts the plain-text CandyBar Icon Request report and separates already-covered components, stale launcher activities, external icon-pack identities and genuinely missing artwork.
+
+## Maintenance
+
+Android-specific artwork in `src/` has priority over desktop artwork. Existing Android icons are never overwritten merely because a similarly named icon exists in desktop Papirus.
+
+### Desktop artwork sync
+
+`scripts/sync_desktop_icons.py` imports missing application artwork from `PapirusDevelopmentTeam/papirus-icon-theme`. Imported files are recorded in `desktop-sync.json`, allowing later upstream updates without taking ownership of manually maintained Android artwork.
 
 ```bash
 git clone https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git ../papirus-icon-theme
@@ -46,30 +48,28 @@ python3 scripts/sync_desktop_icons.py ../papirus-icon-theme \
   --upstream-ref "$(git -C ../papirus-icon-theme rev-parse HEAD)"
 ```
 
-Desktop aliases/symlinks are currently skipped rather than duplicated. Normalized filename collisions are reported and must be reviewed manually.
+Desktop aliases/symlinks are skipped rather than duplicated. Normalized filename collisions are reported for manual review.
 
-## Android-relevant artwork sync
+### Android-relevant artwork sync
 
-`scripts/sync_android_artwork.py` is the safer way to discover **brand-new** Android icons from the desktop theme. It combines the desktop Papirus application artwork with live Arcticons and Lawnicons mappings and only auto-imports candidates with strong identity evidence.
+`scripts/sync_android_artwork.py` discovers brand-new Android-relevant icons from desktop Papirus. It combines desktop artwork with Arcticons and Lawnicons mappings and auto-imports only candidates with strong identity evidence.
 
 A new icon must:
 
-- have an exact normalized drawable-name match between a canonical desktop Papirus SVG and an Android icon-pack drawable,
-- not replace an existing Android SVG or Papirus drawable,
-- not reuse an Android component that Papirus already maps elsewhere,
-- have the desktop/app identity represented in the Android package name itself, and
-- pass the limits and explicit collision exclusions in `artwork-sync-policy.json`.
+- have an exact normalized drawable-name match between canonical desktop Papirus artwork and an Android icon-pack drawable,
+- not replace existing Android SVG artwork,
+- not reuse an Android component already mapped elsewhere,
+- have app identity represented in the Android package name itself, and
+- pass `artwork-sync-policy.json` limits and collision exclusions.
 
-Activity names are intentionally not treated as identity evidence. This avoids false matches from generic frameworks or same-name desktop and Android applications. Candidates that cannot be proven safely are printed as `REVIEW` and are left for manual inspection or the in-app Icon Request flow.
-
-Audit current desktop Papirus against the Android pack:
+Activity names are intentionally not treated as identity evidence. Candidates that cannot be proven safely are reported as `REVIEW` rather than guessed.
 
 ```bash
 git clone https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git ../papirus-icon-theme
 python3 scripts/sync_android_artwork.py ../papirus-icon-theme --list
 ```
 
-Import only automatically verified candidates and record the exact desktop upstream revision:
+To apply automatic candidates:
 
 ```bash
 python3 scripts/sync_android_artwork.py ../papirus-icon-theme \
@@ -79,37 +79,23 @@ DB_FILE=./data.json APPFILTER_FILE=./app/src/main/assets/appfilter.xml \
   python3 scripts/generate_appfilter.py
 ```
 
-Imported desktop artwork is recorded in `desktop-sync.json`. Its generated Android mappings are also recorded in `external-mappings.json`, so they never become self-reinforcing evidence for later automatic matching.
+Imported desktop artwork is recorded in `desktop-sync.json`. Imported mappings are recorded in `external-mappings.json` and are excluded from future inference anchors.
 
-## Android component mapping sync
+### Android component mapping sync
 
-Artwork synchronization and Android app/component mapping are intentionally separate jobs. `data.json` remains the authoritative Papirus mapping database.
+`data.json` is the authoritative Papirus component database. `scripts/sync_external_mappings.py` can learn additional package/activity variants from Arcticons and Lawnicons without fuzzy app-name matching.
 
-`scripts/sync_external_mappings.py` can learn additional package/activity variants from actively maintained Android icon projects. The built-in sources are Arcticons and Lawnicons.
+An external drawable group is accepted only when it already points to one Papirus icon and either its normalized drawable name matches or at least two trusted existing components independently connect the group to that same Papirus icon.
 
-The mapping sync deliberately does **not** fuzzy-match app names. An external drawable group is accepted only when it already points to exactly one Papirus icon and has strong evidence for that relationship:
-
-- its normalized drawable name matches the Papirus drawable name, or
-- at least two existing trusted Android components independently link the external group to the same Papirus icon.
-
-Groups that point to multiple Papirus icons, weak single-component matches, and new components for which different sources disagree are skipped rather than guessed.
-
-Mappings imported from external packs are recorded in `external-mappings.json`. They are never reused as evidence on later synchronization runs, preventing imported mappings from recursively teaching the importer more mappings.
-
-Dry-run both built-in sources:
+Mappings imported from external packs, and mappings verified manually on devices, are provenance-tracked and excluded from later inference. This prevents one accepted mapping from recursively teaching the importer unrelated mappings.
 
 ```bash
 python3 scripts/sync_external_mappings.py
-```
-
-Inspect one source:
-
-```bash
 python3 scripts/sync_external_mappings.py --source arcticons
 python3 scripts/sync_external_mappings.py --source lawnicons
 ```
 
-Apply trusted inferred mappings and regenerate the tracked appfilter:
+To apply trusted inferred mappings:
 
 ```bash
 python3 scripts/sync_external_mappings.py --write
@@ -120,23 +106,21 @@ make test
 
 ## Building
 
-The launcher icons are generated resources; running Gradle alone is not enough to create a complete icon-pack APK. Generate the 192 px PNG resources and XML files before assembling Android:
+Launcher icons are generated resources. Running Gradle alone is not enough to build a complete icon-pack APK.
 
 ```bash
 make VALIDATE=false build
 ./gradlew assembleRelease
 ```
 
-`VALIDATE=false` is currently required because the inherited source tree intentionally contains a small number of manually selectable icons without Android component mappings.
+`VALIDATE=false` is currently required because the inherited source tree intentionally includes a small number of manually selectable icons without Android component mappings.
 
-CI performs the same real-resource build, checks that every source SVG generated a launcher PNG, validates mapping/appfilter consistency, and then builds and uploads the release APK artifact. The existing in-app Icon Request feature remains the fallback for applications that cannot be resolved safely from upstream mappings.
+CI performs the same resource generation, verifies every source SVG has a generated PNG, checks mapping/appfilter consistency, then builds both release and installable debug APK artifacts.
 
-# Install
-You can [download icon pack](https://www.pling.com/p/1662847/) directly from the Android browser or download on PC and send to phone via KDE Connect/Send Anywhere/Android File Transfer or adb.
-Application have "Check Update" button for features updates.
+## Upstream and attribution
 
-# Priority icon requests
-1. If you donate
-2. Popular applications
-3. Open source applications
-4. Games
+Papirus Android is based on the original work from the Papirus Development Team and its contributors. Desktop artwork is synchronized from:
+
+`https://github.com/PapirusDevelopmentTeam/papirus-icon-theme`
+
+Inherited code, artwork and contributor attribution remain governed by their respective repository licenses and history.
