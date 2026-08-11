@@ -76,10 +76,10 @@
         -->
     <string name="home_description">
         <![CDATA[
-            Popular Linux icon theme now on Android!
+            Papirus for Android, maintained as a community fork with full credit to the original Papirus Development Team and contributors.
             <br>
             <br>
-            Your donations will help in the development of the application and accelerate the creation of new icons.
+            This maintained community fork keeps Papirus artwork and Android component mappings current.
         ]]>
     </string>
 
@@ -91,7 +91,7 @@
     <!-- Link to your app's main page. It will be used when your user shares your app using "Share" button.
         Leave this empty to disable the "Share" button.
         You can use special keyword `{{packageName}}`, `{{packageName}}` will be replaced with your app's package name -->
-    <string name="share_link">https://www.pling.com/p/1662847</string>
+    <string name="share_link">https://github.com/xefensor/papirus_android_icons</string>
 
     <!-- Enable "Check for update" button.
         It needs the option "config_json" to be configured in order to work -->
@@ -154,7 +154,7 @@
         CONFIG: ICON REQUEST
     -->
     <!-- Enable or disable regular icon request -->
-    <bool name="enable_icon_request">true</bool>
+    <bool name="enable_icon_request">false</bool>
 
     <!-- Enable regular icon request limit
         When enabled users will be able to request only the specified number of icons.
@@ -220,8 +220,8 @@
     <!-- Email to use when sending icon requests.
         Regular request email address will be used to send bug reports.
         You can leave "premium_request_email" empty to use the regular request's email to send premium icon requests. -->
-    <string name="regular_request_email">varlesh@yandex.ru</string>
-    <string name="premium_request_email">varlesh@yandex.ru</string>
+    <string name="regular_request_email"></string>
+    <string name="premium_request_email"></string>
 
     <!-- Icon request email subjects. Leave empty to use default Subject. -->
     <string name="regular_request_email_subject"></string>
@@ -247,7 +247,7 @@
         Now when "Wallpaper" section is selected in your icon pack app's navigation drawer,
         your wallpaper app will be launched if it's installed. If it's not installed, then the Play Store page
         will be opened to install your wallpaper app. -->
-    <string name="wallpaper_json">https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus_icons/master/walls/walls.json</string>
+    <string name="wallpaper_json">https://raw.githubusercontent.com/xefensor/papirus_android_icons/master/walls/walls.json</string>
 
     <!-- Enable wallpaper downloading
         If disabled, your users will only be able to apply wallpapers from the dashboard.
@@ -283,17 +283,17 @@
         If you want to use an image from url, just put the url here
         If you want to use an image stored in the project ("drawable" folder)
         just put the image's name here without the extension (ex: about_profile_image.png -> about_profile_image) -->
-    <string name="about_profile_image">profile_picture</string>
+    <string name="about_profile_image">ic_splash_screen</string>
 
     <!-- The BIG text which is shown above the description and below the about profile image -->
-    <string name="about_title">Papirus Development Team</string>
+    <string name="about_title">Papirus Android</string>
 
     <!-- The description which is shown below the about title.
         Put your markup/text inside of `<![CDATA[` and `]]>`
         ex: `<![CDATA[ There are - <b>Bold</b> <i>Italic</i> <u>Underline</u> <a href="url">Link</a> ]]>` -->
     <string name="about_desc">
         <![CDATA[
-            Popular Linux icon theme now on Android!
+            Papirus for Android, maintained as a community fork with full credit to the original Papirus Development Team and contributors.
         ]]>
     </string>
 
@@ -307,8 +307,8 @@
         ex: <string-array name="about_social_links"></string-array>
         -->
     <string-array name="about_social_links">
-        <item>varlesh@gmail.com</item>
-        <item>https://github.com/PapirusDevelopmentTeam/papirus_icons</item>
+        <item>https://github.com/xefensor/papirus_android_icons</item>
+        <item>https://github.com/PapirusDevelopmentTeam/papirus-icon-theme</item>
     </string-array>
 
     <!-- Contributors dialog
@@ -332,7 +332,7 @@
     -->
     <!-- Enable/disable donation
         Show support development option in the home page. -->
-    <bool name="enable_donation">true</bool>
+    <bool name="enable_donation">false</bool>
 
     <!-- Take a look inside License.java for donation product -->
 
@@ -346,7 +346,7 @@
     <!-- Link to CandyBar config JSON
         You can use this to control your dashboard remotely.
         Learn more at https://github.com/zixpo/candybar-sample/wiki/Setting-up-the-config-json -->
-    <string name="config_json">https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus_icons/master/update.json</string>
+    <string name="config_json">https://raw.githubusercontent.com/xefensor/papirus_android_icons/master/update.json</string>
 
     <!-- Show intro guides on first run -->
     <bool name="show_intro">true</bool>
