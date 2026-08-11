@@ -2,16 +2,54 @@ name: Build APK
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
+      - agent/android-artwork-coverage
   pull_request:
     branches: [ master ]
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
+  artwork-import:
+    if: github.event_name == 'push' && github.ref_name == 'agent/android-artwork-coverage' && github.event.head_commit.message == 'Run verified artwork import'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout branch
+      uses: actions/checkout@v5
+      with:
+        ref: agent/android-artwork-coverage
+
+    - name: Clone desktop Papirus
+      run: |
+        git clone --depth 1 --filter=blob:none --sparse \
+          https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git /tmp/papirus-icon-theme
+        git -C /tmp/papirus-icon-theme sparse-checkout set Papirus/64x64/apps
+
+    - name: Import verified artwork
+      run: |
+        upstream_ref=$(git -C /tmp/papirus-icon-theme rev-parse HEAD)
+        python3 scripts/sync_android_artwork.py /tmp/papirus-icon-theme \
+          --write \
+          --upstream-ref "$upstream_ref"
+        DB_FILE=./data.json APPFILTER_FILE=./app/src/main/assets/appfilter.xml \
+          python3 scripts/generate_appfilter.py
+
+        git diff --stat -- data.json external-mappings.json desktop-sync.json \
+          app/src/main/assets/appfilter.xml src
+
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add data.json external-mappings.json desktop-sync.json \
+          app/src/main/assets/appfilter.xml src/*.svg
+        git commit -m "Import verified desktop Papirus artwork"
+        git push
+
   artwork-audit:
+    if: github.event_name != 'push' || github.ref_name == 'master'
     runs-on: ubuntu-latest
 
     steps:
@@ -29,6 +67,7 @@ jobs:
         python3 scripts/sync_android_artwork.py /tmp/papirus-icon-theme --list
 
   build:
+    if: github.event_name != 'push' || github.ref_name == 'master'
     runs-on: ubuntu-latest
 
     steps:
