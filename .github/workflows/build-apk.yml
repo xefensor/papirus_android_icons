@@ -2,9 +2,7 @@ name: Build APK
 
 on:
   push:
-    branches:
-      - master
-      - 'agent/**'
+    branches: [ master ]
   pull_request:
     branches: [ master ]
   workflow_dispatch:
@@ -13,6 +11,23 @@ permissions:
   contents: read
 
 jobs:
+  artwork-audit:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v5
+
+    - name: Validate maintenance scripts
+      run: python3 -m py_compile scripts/*.py
+
+    - name: Check desktop Papirus Android candidates
+      run: |
+        git clone --depth 1 --filter=blob:none --sparse \
+          https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git /tmp/papirus-icon-theme
+        git -C /tmp/papirus-icon-theme sparse-checkout set Papirus/64x64/apps
+        python3 scripts/sync_android_artwork.py /tmp/papirus-icon-theme --list
+
   build:
     runs-on: ubuntu-latest
 
@@ -45,13 +60,6 @@ jobs:
         DB_FILE=./data.json APPFILTER_FILE=/tmp/papirus-appfilter.xml \
           python3 scripts/generate_appfilter.py
         cmp app/src/main/assets/appfilter.xml /tmp/papirus-appfilter.xml
-
-    - name: Check desktop Papirus Android candidates
-      run: |
-        git clone --depth 1 --filter=blob:none --sparse \
-          https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git /tmp/papirus-icon-theme
-        git -C /tmp/papirus-icon-theme sparse-checkout set Papirus/64x64/apps
-        python3 scripts/sync_android_artwork.py /tmp/papirus-icon-theme --list
 
     - name: Install SVG renderer
       run: |
