@@ -2,8 +2,15 @@ name: Build APK
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - master
+      - 'agent/**'
+  pull_request:
+    branches: [ master ]
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -11,13 +18,38 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Set up JDK
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v5
       with:
         distribution: 'temurin'
-        java-version: '11'
+        java-version: '17'
+
+    - name: Validate maintenance scripts
+      run: python3 -m py_compile scripts/*.py
+
+    - name: Validate external mapping sync is idempotent
+      run: |
+        cp data.json /tmp/papirus-data.json
+        cp external-mappings.json /tmp/papirus-external-mappings.json
+        python3 scripts/sync_external_mappings.py \
+          --db /tmp/papirus-data.json \
+          --provenance /tmp/papirus-external-mappings.json \
+          --write
+        cmp data.json /tmp/papirus-data.json
+        cmp external-mappings.json /tmp/papirus-external-mappings.json
+
+    - name: Validate tracked appfilter
+      run: |
+        DB_FILE=./data.json APPFILTER_FILE=/tmp/papirus-appfilter.xml \
+          python3 scripts/generate_appfilter.py
+        cmp app/src/main/assets/appfilter.xml /tmp/papirus-appfilter.xml
+
+    - name: Generate appfilter resource
+      run: |
+        DB_FILE=./data.json APPFILTER_FILE=./app/src/main/res/xml/appfilter.xml \
+          python3 scripts/generate_appfilter.py
 
     - name: Make gradlew executable
       run: chmod +x ./gradlew
@@ -29,4 +61,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: app-release-apk
-        path: app/build/outputs/apk/release/app-release.apk
+        path: app/build/outputs/apk/release/*.apk
