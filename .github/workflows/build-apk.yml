@@ -11,6 +11,38 @@ permissions:
   contents: read
 
 jobs:
+  external-proposal-audit:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v5
+    - name: Print mappings unlocked by verified device aliases
+      run: |
+        cp data.json /tmp/papirus-data.json
+        cp external-mappings.json /tmp/papirus-external-mappings.json
+        python3 scripts/sync_external_mappings.py \
+          --db /tmp/papirus-data.json \
+          --provenance /tmp/papirus-external-mappings.json \
+          --write >/tmp/sync-summary.txt
+        cat /tmp/sync-summary.txt
+        python3 - <<'PY'
+        import json
+        before = json.load(open('data.json'))
+        after = json.load(open('/tmp/papirus-data.json'))
+        print('\n=== PROPOSED MAPPINGS ===')
+        total = 0
+        for drawable in before:
+            old = set(before[drawable])
+            new = [c for c in after[drawable] if c not in old]
+            if not new:
+                continue
+            print(f'\n{drawable} ({len(new)} new)')
+            for component in new:
+                print(f'  {component}')
+                total += 1
+        print(f'\nTOTAL={total}')
+        PY
+
   artwork-audit:
     runs-on: ubuntu-latest
 
