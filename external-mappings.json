@@ -7829,6 +7829,12 @@
         "lawnicons"
       ]
     },
+    "com.fitbit.FitbitMobile/com.fitbit.HealthBrandedAlias": {
+      "drawable": "apps_fitbit",
+      "sources": [
+        "device-verified"
+      ]
+    },
     "com.fitbit.FitbitMobile/com.fitbit.onboarding.landing.LandingActivity": {
       "drawable": "apps_fitbit",
       "sources": [
@@ -8749,6 +8755,12 @@
         "arcticons"
       ]
     },
+    "com.github.muellerma.coffee/com.github.muellerma.coffee.activities.MainActivity": {
+      "drawable": "apps_caffeine",
+      "sources": [
+        "device-verified"
+      ]
+    },
     "com.github.vauvenal5.yaga/com.github.vauvenal5.yaga.MainActivity": {
       "drawable": "system_gallery",
       "sources": [
@@ -9204,6 +9216,12 @@
       "sources": [
         "arcticons",
         "lawnicons"
+      ]
+    },
+    "com.google.android.apps.tips/com.google.android.apps.tips.fortnite.p8": {
+      "drawable": "google_pixel_tipps",
+      "sources": [
+        "device-verified"
       ]
     },
     "com.google.android.apps.translate/.TranslateActivity": {
@@ -25689,6 +25707,12 @@
         "arcticons"
       ]
     },
+    "cz.nic.mobiledatovka/org.qtproject.qt.android.bindings.QtActivity": {
+      "drawable": "apps_datovka",
+      "sources": [
+        "device-verified"
+      ]
+    },
     "cz.rb.app.smartphonebanking/com.zentity.rbcz.activity.RootActivity": {
       "drawable": "apps_raiffeisen",
       "sources": [
@@ -25741,6 +25765,12 @@
       "drawable": "system_weather",
       "sources": [
         "arcticons"
+      ]
+    },
+    "de.blinkt.openvpn/de.blinkt.openvpn.activities.MainActivity": {
+      "drawable": "apps_openvpn",
+      "sources": [
+        "device-verified"
       ]
     },
     "de.danoeh.antennapod/de.danoeh.antennapod.activity.MainActivity": {
@@ -25822,6 +25852,12 @@
       "sources": [
         "arcticons",
         "lawnicons"
+      ]
+    },
+    "de.ph1b.audiobook/voice.app.features.MainActivity": {
+      "drawable": "apps_voice_audiobook_player",
+      "sources": [
+        "device-verified"
       ]
     },
     "de.santander.presentation/de.santander.presentation.launcher_80412c2814728a1e830d4d0e7ed57be2ead1e4e16395ee19a258af23c1d761a6": {
@@ -29364,6 +29400,12 @@
         "arcticons"
       ]
     },
+    "org.kde.kdeconnect_tp/org.kde.kdeconnect.ui.MainActivity": {
+      "drawable": "apps_kdeconnect",
+      "sources": [
+        "device-verified"
+      ]
+    },
     "org.kde.keysmith/org.qtproject.qt.android.bindings.QtActivity": {
       "drawable": "apps_keysmith",
       "evidence": "desktop-exact-name+package-identity",
@@ -29688,6 +29730,12 @@
       "drawable": "apps_fennec",
       "sources": [
         "arcticons"
+      ]
+    },
+    "org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppRetro2004": {
+      "drawable": "apps_fennec",
+      "sources": [
+        "device-verified"
       ]
     },
     "org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppSolidBlue": {
