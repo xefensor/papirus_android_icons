@@ -21,7 +21,6 @@ from typing import Iterable
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DB = ROOT / "data.json"
 DEFAULT_PROVENANCE = ROOT / "external-mappings.json"
-SINGLE_ANCHOR_MAX_GROUP = 10
 DRAWABLE_PREFIXES = ("apps_", "games_", "google_", "system_")
 
 SOURCES = {
@@ -144,6 +143,8 @@ def main() -> int:
     rejected_low_confidence = 0
     unresolved = 0
     accepted_groups = 0
+    accepted_exact_name = 0
+    accepted_multi_anchor = 0
 
     print(
         f"Papirus: {len(data)} icons, {len(reverse)} unique components, "
@@ -175,11 +176,15 @@ def main() -> int:
             target = next(iter(targets))
             exact_name = normalize_drawable(external_drawable) == normalize_drawable(target)
             multi_anchor = len(anchor_components) >= 2
-            small_group = len(components) <= SINGLE_ANCHOR_MAX_GROUP
-            if not (exact_name or multi_anchor or small_group):
+            if not (exact_name or multi_anchor):
                 rejected_low_confidence += 1
                 source_rejected += 1
                 continue
+
+            if exact_name:
+                accepted_exact_name += 1
+            elif multi_anchor:
+                accepted_multi_anchor += 1
 
             accepted_groups += 1
             source_accepted += 1
@@ -207,6 +212,10 @@ def main() -> int:
     print(
         f"\nResult: {unique_additions} unique new component mappings for "
         f"{len(additions)} Papirus icons from {accepted_groups} accepted groups."
+    )
+    print(
+        f"Accepted groups: {accepted_exact_name} exact-name, "
+        f"{accepted_multi_anchor} multi-anchor."
     )
     print(f"Rejected {rejected_low_confidence} low-confidence groups.")
 
