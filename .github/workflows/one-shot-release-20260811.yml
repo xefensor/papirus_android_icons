@@ -1,0 +1,113 @@
+name: One-shot production release 20260811
+
+on:
+  push:
+    branches: [ agent/release-20260811-live ]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout release source
+        uses: actions/checkout@v5
+        with:
+          ref: 8417f83964659a4a40bf069e214364859511381a
+
+      - name: Set up JDK
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Install SVG renderer
+        run: |
+          if ! command -v inkscape >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y --no-install-recommends inkscape
+          fi
+
+      - name: Generate complete icon resources
+        run: make VALIDATE=false build
+
+      - name: Build unsigned release APK
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleRelease
+
+      - name: Create production signing key
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p signing release
+          SIGN_PASS="$(openssl rand -hex 24)"
+          ALIAS="papirus-android-release"
+          keytool -genkeypair \
+            -keystore signing/papirus-android-release.keystore \
+            -storetype PKCS12 \
+            -storepass "$SIGN_PASS" \
+            -keypass "$SIGN_PASS" \
+            -alias "$ALIAS" \
+            -keyalg RSA \
+            -keysize 4096 \
+            -validity 10000 \
+            -dname "CN=Papirus Android Community Fork, O=xefensor, C=CZ"
+          {
+            echo "keystore=papirus-android-release.keystore"
+            echo "alias=$ALIAS"
+            echo "store_password=$SIGN_PASS"
+            echo "key_password=$SIGN_PASS"
+          } > signing/signing-credentials.txt
+          chmod 600 signing/*
+          echo "SIGN_PASS=$SIGN_PASS" >> "$GITHUB_ENV"
+          echo "KEY_ALIAS=$ALIAS" >> "$GITHUB_ENV"
+
+      - name: Sign and verify production APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          UNSIGNED="$(find app/build/outputs/apk/release -name '*-release-unsigned.apk' -print -quit)"
+          test -n "$UNSIGNED"
+          APKSIGNER="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n1)"
+          test -x "$APKSIGNER"
+          "$APKSIGNER" sign \
+            --ks signing/papirus-android-release.keystore \
+            --ks-key-alias "$KEY_ALIAS" \
+            --ks-pass "pass:$SIGN_PASS" \
+            --key-pass "pass:$SIGN_PASS" \
+            --out release/Papirus-Icon-Pack-20260811.apk \
+            "$UNSIGNED"
+          "$APKSIGNER" verify --verbose --print-certs release/Papirus-Icon-Pack-20260811.apk
+          sha256sum release/Papirus-Icon-Pack-20260811.apk | tee release/SHA256SUMS.txt
+
+      - name: Upload signing backup for owner
+        uses: actions/upload-artifact@v4
+        with:
+          name: papirus-production-signing-key-KEEP-SAFE
+          path: signing/
+          retention-days: 90
+          if-no-files-found: error
+
+      - name: Upload signed release APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: papirus-production-release-20260811
+          path: |
+            release/Papirus-Icon-Pack-20260811.apk
+            release/SHA256SUMS.txt
+          retention-days: 90
+          if-no-files-found: error
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create v20260811 \
+            release/Papirus-Icon-Pack-20260811.apk \
+            release/SHA256SUMS.txt \
+            --repo xefensor/papirus_android_icons \
+            --target 8417f83964659a4a40bf069e214364859511381a \
+            --title "Papirus Icon Pack 20260811" \
+            --notes "First maintained release of the xefensor Papirus Android community fork.\n\nHighlights:\n- 84 Android-relevant icons imported from current desktop Papirus artwork\n- refreshed Android component mappings\n- complete SVG-to-PNG resource build\n- maintained fork identity, update links and metadata\n- stale maintainer email and donation endpoints removed\n\nThis APK is a production release build signed with the fork's new long-term Android signing key. Keep the signing-key backup produced by this workflow safe; future APK updates must use the same key."
