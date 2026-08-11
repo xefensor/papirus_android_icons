@@ -243,8 +243,11 @@ def main() -> int:
                 "sources": sorted(proposal_sources[component]),
             }
 
+    # Preserve the existing top-level data.json key order so maintenance imports
+    # do not create thousands of unrelated diff lines. New component mappings are
+    # appended within their existing drawable lists.
     with args.db.open("w", encoding="utf-8") as handle:
-        json.dump(data, handle, indent=2, sort_keys=True)
+        json.dump(data, handle, indent=2)
         handle.write("\n")
     with args.provenance.open("w", encoding="utf-8") as handle:
         json.dump(provenance, handle, indent=2, sort_keys=True)
