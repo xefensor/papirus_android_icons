@@ -23,7 +23,7 @@ Below launchers have been tested to be working successfully with Papirus Icon am
 # Features
 - Fully Open Source
 - Pixel perfect
-- More than 1500 icons
+- More than 2300 mapped icons
 - Inspired by Material design
 - Icon Request option
 - Check Update function
@@ -47,6 +47,39 @@ python3 scripts/sync_desktop_icons.py ../papirus-icon-theme \
 ```
 
 Desktop aliases/symlinks are currently skipped rather than duplicated. Normalized filename collisions are reported and must be reviewed manually.
+
+## Android-relevant artwork sync
+
+`scripts/sync_android_artwork.py` is the safer way to discover **brand-new** Android icons from the desktop theme. It combines the desktop Papirus application artwork with live Arcticons and Lawnicons mappings and only auto-imports candidates with strong identity evidence.
+
+A new icon must:
+
+- have an exact normalized drawable-name match between a canonical desktop Papirus SVG and an Android icon-pack drawable,
+- not replace an existing Android SVG or Papirus drawable,
+- not reuse an Android component that Papirus already maps elsewhere,
+- have the desktop/app identity represented in the Android package name itself, and
+- pass the limits and explicit collision exclusions in `artwork-sync-policy.json`.
+
+Activity names are intentionally not treated as identity evidence. This avoids false matches from generic frameworks or same-name desktop and Android applications. Candidates that cannot be proven safely are printed as `REVIEW` and are left for manual inspection or the in-app Icon Request flow.
+
+Audit current desktop Papirus against the Android pack:
+
+```bash
+git clone https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git ../papirus-icon-theme
+python3 scripts/sync_android_artwork.py ../papirus-icon-theme --list
+```
+
+Import only automatically verified candidates and record the exact desktop upstream revision:
+
+```bash
+python3 scripts/sync_android_artwork.py ../papirus-icon-theme \
+  --write \
+  --upstream-ref "$(git -C ../papirus-icon-theme rev-parse HEAD)"
+DB_FILE=./data.json APPFILTER_FILE=./app/src/main/assets/appfilter.xml \
+  python3 scripts/generate_appfilter.py
+```
+
+Imported desktop artwork is recorded in `desktop-sync.json`. Its generated Android mappings are also recorded in `external-mappings.json`, so they never become self-reinforcing evidence for later automatic matching.
 
 ## Android component mapping sync
 
@@ -85,7 +118,18 @@ DB_FILE=./data.json APPFILTER_FILE=./app/src/main/assets/appfilter.xml \
 make test
 ```
 
-CI checks that external mapping sync is idempotent, the tracked `assets/appfilter.xml` is generated from `data.json`, and the release APK still builds. The existing in-app Icon Request feature remains the fallback for applications that cannot be resolved safely from upstream mappings.
+## Building
+
+The launcher icons are generated resources; running Gradle alone is not enough to create a complete icon-pack APK. Generate the 192 px PNG resources and XML files before assembling Android:
+
+```bash
+make VALIDATE=false build
+./gradlew assembleRelease
+```
+
+`VALIDATE=false` is currently required because the inherited source tree intentionally contains a small number of manually selectable icons without Android component mappings.
+
+CI performs the same real-resource build, checks that every source SVG generated a launcher PNG, validates mapping/appfilter consistency, and then builds and uploads the release APK artifact. The existing in-app Icon Request feature remains the fallback for applications that cannot be resolved safely from upstream mappings.
 
 # Install
 You can [download icon pack](https://www.pling.com/p/1662847/) directly from the Android browser or download on PC and send to phone via KDE Connect/Send Anywhere/Android File Transfer or adb.

@@ -1,6 +1,343 @@
 {
-  "icons": {},
+  "icons": {
+    "apps_8tracks.svg": {
+      "sha256": "fef822c727816b853bc63efd056cef958a78e6115415fbfb86f950108e72408b",
+      "source": "8tracks.svg"
+    },
+    "apps_aaaaxy.svg": {
+      "sha256": "0d2a12a935f40e7677f96ae1d3a5c5954ae2338053cc2b811bc8d8726ec3868c",
+      "source": "aaaaxy.svg"
+    },
+    "apps_airvpn.svg": {
+      "sha256": "0fb02689b16e8ac94cf48aefad7f1c6efbbd0099dcda65791416c5c40b97c65d",
+      "source": "airvpn.svg"
+    },
+    "apps_alligator.svg": {
+      "sha256": "dd550dc0e9c3c885e7cc79cb07aa8feedf17d4d626aff926ffa49ecb6ee7d8c1",
+      "source": "alligator.svg"
+    },
+    "apps_antidote.svg": {
+      "sha256": "e0f1b84b6c8efecefbba3a73f3141010059b1243a0dee74831e91a834b80ae21",
+      "source": "antidote.svg"
+    },
+    "apps_authpass.svg": {
+      "sha256": "622bdcfd9c931b903329c793aaa405495622d9ac926fa91513df237357922a92",
+      "source": "authpass.svg"
+    },
+    "apps_beeper.svg": {
+      "sha256": "752c5c6a6d0b41c1e9b92eada2fc366531a8ef625f3cf53849727af9160135b6",
+      "source": "beeper.svg"
+    },
+    "apps_biglybt.svg": {
+      "sha256": "cd84a2fe6429968020c2705a62d03ec984e9b5d2294bf4c878c0f8d3c376ad73",
+      "source": "biglybt.svg"
+    },
+    "apps_binance.svg": {
+      "sha256": "deb70fbfedd772248b1d1f6458048371b7b921cd08ab710e925e23f55b3f968c",
+      "source": "binance.svg"
+    },
+    "apps_box.svg": {
+      "sha256": "d15aa936d49915ef5f7ff0480438aeab2e9eb64b8ef692f06c60899a0b961ea8",
+      "source": "box.svg"
+    },
+    "apps_cemu.svg": {
+      "sha256": "37ca48971afe728fd998752f93fdf00c34a394b1e7dc5a1c3f583337285df399",
+      "source": "cemu.svg"
+    },
+    "apps_cozydrive.svg": {
+      "sha256": "7fcf57858575aa8db9d9ba1e97f64c1d65fc5c4581f9310533987c4c738c4191",
+      "source": "cozydrive.svg"
+    },
+    "apps_cromite.svg": {
+      "sha256": "e71b18d72abced7983e38266e75ef16b270e1f3140e30fb3f7eeaaf43dbddd95",
+      "source": "cromite.svg"
+    },
+    "apps_cuphead.svg": {
+      "sha256": "3c35b9a8db48db6ddb515bd08f8a505c9e3950c87e45282f7637c1557e3ec4c3",
+      "source": "cuphead.svg"
+    },
+    "apps_deltarune.svg": {
+      "sha256": "708f6c86ed8980ac6e02542bae268eeba5169583de2941b2b4b2ee02650ca32f",
+      "source": "deltarune.svg"
+    },
+    "apps_deluge.svg": {
+      "sha256": "5468c85e1434ef2a6a639a8f3c9ed8c3e3081eb0b9cf1dd1038d983a0636c316",
+      "source": "deluge.svg"
+    },
+    "apps_enter_the_gungeon.svg": {
+      "sha256": "112478de2b3e017226db0f517dfdfaf0fa3c1f65129180adc47120a4b0dc8e63",
+      "source": "enter-the-gungeon.svg"
+    },
+    "apps_fall_guys.svg": {
+      "sha256": "929737dcceda24ffcd9740e80d81c44dcd6eb2a00e697637c0183e77937c98ae",
+      "source": "fall-guys.svg"
+    },
+    "apps_famistudio.svg": {
+      "sha256": "e35bbcca60c94024c981b406547575c131ef8ec911a843103a1d982d291ad97b",
+      "source": "FamiStudio.svg"
+    },
+    "apps_filen.svg": {
+      "sha256": "f236091ab61f0400a13e582d6d0b2fc62fbc5268305dc8fd9ff5b3ec282c7223",
+      "source": "filen.svg"
+    },
+    "apps_flycast.svg": {
+      "sha256": "4d9574e9b9623b77c19d63e762fd3697eae001459aa4f7b188ccf1ab1d5b4ddf",
+      "source": "flycast.svg"
+    },
+    "apps_freetube.svg": {
+      "sha256": "249f2709587b251a054ae2d605511192c222b6edbac35522da1b02c0d3a03379",
+      "source": "freetube.svg"
+    },
+    "apps_gcompris.svg": {
+      "sha256": "aa95ead583563f87726bf8780c9a8b3782bf34c5f2cfbff6b27f237e493d5512",
+      "source": "gcompris.svg"
+    },
+    "apps_gitlab.svg": {
+      "sha256": "876531a45982db5477571b8d1b7f6a14ff338cf6aeac73ebde897265b21cad10",
+      "source": "gitlab.svg"
+    },
+    "apps_godot.svg": {
+      "sha256": "6d0266c87aa7f0224e9407e3e2f9cab2739b96fb632e7f648c71263ef9d2c7b4",
+      "source": "godot.svg"
+    },
+    "apps_harmonoid.svg": {
+      "sha256": "c2abae27267df05a12544d984ca8007b4b1c78bb1f48a5071c9ed4b0d789e046",
+      "source": "harmonoid.svg"
+    },
+    "apps_hollow_knight.svg": {
+      "sha256": "6f3bedd7674062a8afce06867f282747c9ee858e09befe3df0fd7f47396848a1",
+      "source": "hollow-knight.svg"
+    },
+    "apps_hulu.svg": {
+      "sha256": "e56ac19fbdc177374a37b82e82475ea47a30accd9ec330ae0b23e1d4bd890aff",
+      "source": "hulu.svg"
+    },
+    "apps_i2pd.svg": {
+      "sha256": "a1d3185fc53f490c5d0bc717fb13b7fb1da9f672bf24180a75d8a3c6fdded6d2",
+      "source": "i2pd.svg"
+    },
+    "apps_icecat.svg": {
+      "sha256": "103226a33c28a38acebaab6db7b3d30e5b11a1c8da964e6137e6c65cd4c4961d",
+      "source": "icecat.svg"
+    },
+    "apps_jamendo.svg": {
+      "sha256": "d2ad51ef6a34b57a5ccdcd42ec1ab54efcd844f8e852fcd1b5b28a6a04f1c1bd",
+      "source": "jamendo.svg"
+    },
+    "apps_jamesdsp.svg": {
+      "sha256": "dd959d2182c52e37107d78c55d0ce8460291c0505eb14ea5659bd6515334547f",
+      "source": "jamesdsp.svg"
+    },
+    "apps_kaidan.svg": {
+      "sha256": "b61698dce4a5ae65f5d061721994aeb6e45943f459fde06805722c4423e9e4bf",
+      "source": "kaidan.svg"
+    },
+    "apps_keysmith.svg": {
+      "sha256": "521f27a3a0f2330a71df5ff04d7734347c9a23d8fa8d13f0492f8159905dd5e4",
+      "source": "keysmith.svg"
+    },
+    "apps_kid3.svg": {
+      "sha256": "bcae2cd039546d326487d2b76a1826b9ab19520b4ce4a7f77530ed351782bb9b",
+      "source": "kid3.svg"
+    },
+    "apps_krita.svg": {
+      "sha256": "b79019be46beefde8875525175340fbd8b4f40ebcc212acca61924db159f4fd1",
+      "source": "krita.svg"
+    },
+    "apps_logseq.svg": {
+      "sha256": "15ecbafb04100257de32786587a15a2b1223b64e6b9f9c87032f740a63d09f42",
+      "source": "logseq.svg"
+    },
+    "apps_milkytracker.svg": {
+      "sha256": "5e42aba260be65f50a19818f75cab99af173a51cbd6d1a34e328fb5aedc55457",
+      "source": "milkytracker.svg"
+    },
+    "apps_mozc.svg": {
+      "sha256": "e8f6432c4c2c6fd8eb230ff1a6bbec3918c562a5ee6bafa0a69ba9ce41dd9f4b",
+      "source": "mozc.svg"
+    },
+    "apps_naver_whale.svg": {
+      "sha256": "29da331629a1af7d79bc34d1fa2c47a5be43d4d475850c9c5aa551c6ab8fdd66",
+      "source": "naver-whale.svg"
+    },
+    "apps_no_mans_sky.svg": {
+      "sha256": "08fbd9507fdca0502d3496b80345974e6668e0870de3e1d1981aa4458e4e1db7",
+      "source": "no-mans-sky.svg"
+    },
+    "apps_notesnook.svg": {
+      "sha256": "324cefd16fb97e5794e81d85c7e57d1221c2aee4aec3f9a657b07ee051cdb8f2",
+      "source": "Notesnook.svg"
+    },
+    "apps_openmw.svg": {
+      "sha256": "91d7583a0e0b7d0a607f17bc6622ecf66656e4d695a6de880e34adc668b80534",
+      "source": "openmw.svg"
+    },
+    "apps_parsec.svg": {
+      "sha256": "402e9e20e9b99349c0cfd0b4da7cf9288d095f588e8951e847bffee77d576142",
+      "source": "parsec.svg"
+    },
+    "apps_proton_pass.svg": {
+      "sha256": "8d58c141f9123183ef5362de0e04dc61e9a48b7ecb1e9e7633a5490d5520ed25",
+      "source": "proton-pass.svg"
+    },
+    "apps_qalculate.svg": {
+      "sha256": "40de5b3b392b3b79338d409bdff6238ce27c12a43a34c20a516b6ee5c02a1638",
+      "source": "qalculate.svg"
+    },
+    "apps_qqmusic.svg": {
+      "sha256": "a32d11e0d47d5030c693d59b1b3af9592327d1fae9d02bf49f40bfb19b6ce0ca",
+      "source": "qqmusic.svg"
+    },
+    "apps_remnote.svg": {
+      "sha256": "ff3e238453940c6b60e1074feb0855343a8ea8a7f73b7db6f727cfe0c4dbd4b8",
+      "source": "remnote.svg"
+    },
+    "apps_revolt.svg": {
+      "sha256": "48ba6e308b3c81ff71dc2e0bb24500992ba29bc3e2f73f1159e66b9c45fa1b0d",
+      "source": "revolt.svg"
+    },
+    "apps_rocksndiamonds.svg": {
+      "sha256": "4fb9d7770425a1f1c6f382e101df1263a8ab96611aa290f5b629659aca6f6d6a",
+      "source": "rocksndiamonds.svg"
+    },
+    "apps_runescape.svg": {
+      "sha256": "343bddb78d2b7f74826f6e906c225c59788d12397fb354932fc89c9bce0a8de8",
+      "source": "runescape.svg"
+    },
+    "apps_sdrangel.svg": {
+      "sha256": "3ff818486def986828fd947854c169bd20cd938d7b714926816de7f3aee869b2",
+      "source": "sdrangel.svg"
+    },
+    "apps_shadow.svg": {
+      "sha256": "d045076305751a3d95001de649e366852e91de82c48bc5c22fc7809084ca3752",
+      "source": "shadow.svg"
+    },
+    "apps_slay_the_spire.svg": {
+      "sha256": "a4439411fd34c45a35e1b5f642761ad98ec495936cc4bbbb68fb1c6b7635b01b",
+      "source": "slay-the-spire.svg"
+    },
+    "apps_somafm.svg": {
+      "sha256": "f35eb8efd0d1c9e6540ae5327fbb5af389799601bf3f0cafff86f5f4c97bb565",
+      "source": "somafm.svg"
+    },
+    "apps_standard_notes.svg": {
+      "sha256": "2e6d2465715f1c67a3eac5d58e7d1419c272b012e425736e5fc5fba889a936c8",
+      "source": "standard-notes.svg"
+    },
+    "apps_stardew_valley.svg": {
+      "sha256": "46cd2f6247d3f6ac5c3eb94a24dbd00bb6aa0e2bdcb79727b92e2591dc9917fd",
+      "source": "stardew-valley.svg"
+    },
+    "apps_surfshark.svg": {
+      "sha256": "0a4fa70e7cbba92894883d6836b386c061ea170d63fdfc7d64b18605d5d51bf5",
+      "source": "surfshark.svg"
+    },
+    "apps_syncplay.svg": {
+      "sha256": "87d728949197597fca9697968f48fc01b17324a164d11b4efd413d538da8e8f9",
+      "source": "syncplay.svg"
+    },
+    "apps_synology_drive.svg": {
+      "sha256": "a72eb78c69827fb86ae28a08f908785b5193bb60d91ce22fc3109764bf7ab52b",
+      "source": "synology-drive.svg"
+    },
+    "apps_tandem.svg": {
+      "sha256": "b54bc9e9eadb16389ef0e28ab354c2101941bc44f391b7332ee439dafe3273b6",
+      "source": "tandem.svg"
+    },
+    "apps_taskbar.svg": {
+      "sha256": "15bb2173dbc670f504690123ebac5d1f8ee8eee5d03de5712170558a6b1dcb45",
+      "source": "taskbar.svg"
+    },
+    "apps_thunderbird.svg": {
+      "sha256": "f3b2623c927b2c5086b4ffa9a05b36f4e7c66d4e72d283fcf6dd17ea15798a32",
+      "source": "thunderbird.svg"
+    },
+    "apps_tidal.svg": {
+      "sha256": "d8672d38653d1ae3c4a2147f49b8d02ceee865141e04984b1366b4ebac242f81",
+      "source": "tidal.svg"
+    },
+    "apps_tokodon.svg": {
+      "sha256": "a9ff7a983200040f22ccaf344a6ed897a6a72932f4c25162a0057e28204c8ec4",
+      "source": "tokodon.svg"
+    },
+    "apps_torguard.svg": {
+      "sha256": "58bab0d05ba7c07b8765e875430e5c4d50e58a6cbbb9328c31b8ccd696f2d0ce",
+      "source": "torguard.svg"
+    },
+    "apps_tuxguitar.svg": {
+      "sha256": "8fd0f102fe349fe20ac48d20b5b424c00323d2c4bc62b4bb92bb5701db61711d",
+      "source": "tuxguitar.svg"
+    },
+    "apps_unciv.svg": {
+      "sha256": "1c6767f58cb9b10d1ea811d0c7cde69092849a143f20b763708f56cef121281f",
+      "source": "unciv.svg"
+    },
+    "apps_undertale.svg": {
+      "sha256": "14076a27352c30df4a3ccbd8c22ae19a299c71254a874fcb6f130fa4cca08edd",
+      "source": "undertale.svg"
+    },
+    "apps_virustotal.svg": {
+      "sha256": "81c2141346977215d0f776e33520cb77ca651e7398e529d454c054c2af8f8112",
+      "source": "virustotal.svg"
+    },
+    "apps_vita3k.svg": {
+      "sha256": "5fe3bf531143d58e249de6d472b397f3b2bdaa23140fcef468978ff60ab518df",
+      "source": "vita3k.svg"
+    },
+    "apps_warframe.svg": {
+      "sha256": "7b21ab1107676ff5eae8d0ee5a234cfb17d22c062f6db02fb7d4bb4d54a40e72",
+      "source": "warframe.svg"
+    },
+    "apps_waterfox.svg": {
+      "sha256": "d922b2b1b9e90bf08e61684428e2251f57f0d5b0604166de9be47c9169795fa9",
+      "source": "waterfox.svg"
+    },
+    "apps_wemeet.svg": {
+      "sha256": "7552f661bdeb794542d8a8a556162277f52251b8b8af637b6cf3122041aec9d5",
+      "source": "wemeet.svg"
+    },
+    "apps_workflowy.svg": {
+      "sha256": "42f27be0052bb9ced0fec158d9ba87d271624e622b08823ecb150955a2cd64ad",
+      "source": "workflowy.svg"
+    },
+    "apps_wunderlist.svg": {
+      "sha256": "e9bb6f616ddcd333972b9731581ed454726800afb05e27be6d2782cced5b1640",
+      "source": "wunderlist.svg"
+    },
+    "apps_xenia.svg": {
+      "sha256": "beb75dcc61f8d8219f3195af48d7385f8e2082ce5862ce38dd3a5911132b6a9e",
+      "source": "xenia.svg"
+    },
+    "apps_xmind.svg": {
+      "sha256": "bfb2e10904f46a5f9e6a52e4b4c1310ee8c8d152e399c45c9134c858fc4d23c9",
+      "source": "xmind.svg"
+    },
+    "apps_yahoo_mail.svg": {
+      "sha256": "b145c0c7ba3615d5b14530fcb4931e6853d46d10445dde50ecafa26e9f9906cf",
+      "source": "yahoo-mail.svg"
+    },
+    "apps_youtrack.svg": {
+      "sha256": "7735e4244b3917a451e69956e89add524eb6f7e408b64881f08bc6bd1012bb90",
+      "source": "youtrack.svg"
+    },
+    "apps_yuzu.svg": {
+      "sha256": "28eb41ad4bc19efa9a907f16ac77310431b8418f3e9a175521e89e22647c6a60",
+      "source": "yuzu.svg"
+    },
+    "apps_zenkit.svg": {
+      "sha256": "bd914804491a3f38e7de8777c78af72d145f29e326f28e585d5cd90fc5cc990f",
+      "source": "zenkit.svg"
+    },
+    "apps_zeronet.svg": {
+      "sha256": "eca337e2fbb56b8df8cbfc9789ba030c0d1619e33baf17d08c88864d6d47ad60",
+      "source": "ZeroNet.svg"
+    },
+    "apps_zmninja.svg": {
+      "sha256": "939a3020da69c02479f372484b582112a1041cb1d09883a4686b2c4c583b6079",
+      "source": "zmninja.svg"
+    }
+  },
   "upstream": "PapirusDevelopmentTeam/papirus-icon-theme",
-  "upstream_ref": "",
+  "upstream_ref": "5f8b701d7521e27b4859d7e4f9b0da4c423c036c",
   "version": 1
 }

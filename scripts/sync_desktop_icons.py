@@ -45,8 +45,10 @@ def resource_name(filename: str) -> str:
     stem = re.sub(r"[^a-z0-9]+", "_", stem).strip("_")
     if not stem:
         raise ValueError(f"cannot derive Android resource name from {filename!r}")
-    if stem[0].isdigit():
-        stem = "_" + stem
+
+    # The Android drawable itself starts with the safe ``apps_`` prefix, so a
+    # desktop filename such as ``1password.svg`` should become
+    # ``apps_1password`` rather than the incorrect ``apps__1password``.
     return "apps_" + stem
 
 

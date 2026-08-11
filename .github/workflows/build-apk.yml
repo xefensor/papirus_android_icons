@@ -2,9 +2,7 @@ name: Build APK
 
 on:
   push:
-    branches:
-      - master
-      - 'agent/**'
+    branches: [ master ]
   pull_request:
     branches: [ master ]
   workflow_dispatch:
@@ -13,6 +11,23 @@ permissions:
   contents: read
 
 jobs:
+  artwork-audit:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v5
+
+    - name: Validate maintenance scripts
+      run: python3 -m py_compile scripts/*.py
+
+    - name: Check desktop Papirus Android candidates
+      run: |
+        git clone --depth 1 --filter=blob:none --sparse \
+          https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git /tmp/papirus-icon-theme
+        git -C /tmp/papirus-icon-theme sparse-checkout set Papirus/64x64/apps
+        python3 scripts/sync_android_artwork.py /tmp/papirus-icon-theme --list
+
   build:
     runs-on: ubuntu-latest
 
@@ -46,19 +61,38 @@ jobs:
           python3 scripts/generate_appfilter.py
         cmp app/src/main/assets/appfilter.xml /tmp/papirus-appfilter.xml
 
-    - name: Generate appfilter resource
+    - name: Install SVG renderer
       run: |
-        DB_FILE=./data.json APPFILTER_FILE=./app/src/main/res/xml/appfilter.xml \
-          python3 scripts/generate_appfilter.py
+        if ! command -v inkscape >/dev/null; then
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends inkscape
+        fi
+
+    - name: Generate icon pack resources
+      run: make VALIDATE=false build
+
+    - name: Verify generated icon bitmaps
+      run: |
+        svg_count=$(find src -maxdepth 1 -name '*.svg' | wc -l)
+        png_count=$(find app/src/main/res/drawable-nodpi -maxdepth 1 -name '*.png' ! -name 'ic_splash_screen.png' | wc -l)
+        echo "SVG icons: $svg_count"
+        echo "Generated PNG icons: $png_count"
+        test "$svg_count" -eq "$png_count"
 
     - name: Make gradlew executable
       run: chmod +x ./gradlew
 
-    - name: Build APK
-      run: ./gradlew assembleRelease
+    - name: Build release and installable test APKs
+      run: ./gradlew assembleRelease assembleDebug
 
-    - name: Upload APK
+    - name: Upload release APK
       uses: actions/upload-artifact@v4
       with:
         name: app-release-apk
         path: app/build/outputs/apk/release/*.apk
+
+    - name: Upload installable test APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-test-apk
+        path: app/build/outputs/apk/debug/*.apk

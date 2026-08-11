@@ -1169,6 +1169,27 @@
         "lawnicons"
       ]
     },
+    "chat.revolt.app.twa/chat.revolt.app.twa.LauncherActivity": {
+      "drawable": "apps_revolt",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "chat.revolt.debug/chat.revolt.activities.MainActivity": {
+      "drawable": "apps_revolt",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "chat.revolt/chat.revolt.activities.MainActivity": {
+      "drawable": "apps_revolt",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "chat.rocket.android/chat.rocket.android.authentication.ui.AuthenticationActivity": {
       "drawable": "apps_rocketchat",
       "sources": [
@@ -1501,6 +1522,14 @@
         "arcticons"
       ]
     },
+    "com.Booker.UndertaleBitsAndPieces/com.Booker.UndertaleBitsAndPieces.RunnerActivity": {
+      "drawable": "apps_undertale",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
     "com.CreaTeamMobile.NextbotsinBackrooms/com.unity3d.player.UnityPlayerActivity": {
       "drawable": "apps_meme_generator",
       "sources": [
@@ -1528,6 +1557,14 @@
     "com.LoopGames.game2048/com.google.firebase.MessagingUnityPlayerActivity": {
       "drawable": "games_2048",
       "sources": [
+        "lawnicons"
+      ]
+    },
+    "com.Mediatonic.FallGuys_client/com.unity3d.player.UnityPlayerActivity": {
+      "drawable": "apps_fall_guys",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
         "lawnicons"
       ]
     },
@@ -1595,10 +1632,41 @@
         "arcticons"
       ]
     },
+    "com.SpanishFreddy.Cuphead/com.unity3d.player.UnityPlayerActivity": {
+      "drawable": "apps_cuphead",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "com.Splashapp.MemeSoundboard2021/com.unity3d.player.UnityPlayerActivity": {
       "drawable": "apps_meme_generator",
       "sources": [
         "arcticons"
+      ]
+    },
+    "com.TeamCherry.HollowKnight/com.unity3d.player.UnityPlayerActivity": {
+      "drawable": "apps_hollow_knight",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.TeamCherry.HollowKnightGrimm/com.unity3d.player.UnityPlayerActivity": {
+      "drawable": "apps_hollow_knight",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.TeamModding.HollowKnight/com.unity3d.player.UnityPlayerActivity": {
+      "drawable": "apps_hollow_knight",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
       ]
     },
     "com.TechTreeGames.TheTower/com.google.android.archive.ReactivateActivity": {
@@ -2339,6 +2407,14 @@
       "drawable": "games_2048",
       "sources": [
         "arcticons"
+      ]
+    },
+    "com.alexmercerind.harmonoid/com.alexmercerind.harmonoid.MainActivity": {
+      "drawable": "apps_harmonoid",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
       ]
     },
     "com.alexpp.mpa/com.alexpp.mpa.MainActivity": {
@@ -3189,6 +3265,14 @@
         "lawnicons"
       ]
     },
+    "com.android.tidal.campaigninstaller/com.android.campaigninstaller.MainActivity": {
+      "drawable": "apps_tidal",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
     "com.android.user.manual/com.android.user.manual.MainActivity": {
       "drawable": "apps_user_manual",
       "sources": [
@@ -3637,6 +3721,14 @@
       "drawable": "system_gallery",
       "sources": [
         "arcticons"
+      ]
+    },
+    "com.aspiro.tidal/com.aspiro.wamp.LoginFragmentActivity": {
+      "drawable": "apps_tidal",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
       ]
     },
     "com.aswat.carrefouruae/com.aswat.carrefouruae.mafretail_app.MainActivity": {
@@ -4133,6 +4225,38 @@
         "arcticons"
       ]
     },
+    "com.beeper.android/com.beeper.chat.booper.MainActivity": {
+      "drawable": "apps_beeper",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.beeper.android/com.beeper.chat.booper.MainActivity_Alt_Texts": {
+      "drawable": "apps_beeper",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.beeper.android/com.beeper.chat.booper.MainActivity_Default": {
+      "drawable": "apps_beeper",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.beeper.ima/com.beeper.chat.booper.MainActivity": {
+      "drawable": "apps_beeper",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
     "com.belizetelemedia.digiwallet/com.belizetelemedia.digiwallet.MainActivity": {
       "drawable": "apps_wallet",
       "sources": [
@@ -4211,6 +4335,78 @@
       "drawable": "apps_bigbasket",
       "sources": [
         "arcticons"
+      ]
+    },
+    "com.biglybt.android.client/com.biglybt.android.client.activity.IntentHandler": {
+      "drawable": "apps_biglybt",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.binance.dev/com.binance.dev.SplashActivity": {
+      "drawable": "apps_binance",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.binance.dev/com.binance.dev.activities.main.MainActivity": {
+      "drawable": "apps_binance",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.binance.dev/com.binance.dev.activities.splash.SplashActivity": {
+      "drawable": "apps_binance",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.binance.dev/com.binance.launcher.activities.main.BnbMainActivity": {
+      "drawable": "apps_binance",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.binance.dev/com.binance.launcher.activities.main.MainActivity": {
+      "drawable": "apps_binance",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.binance.dev/com.eaas.launcher.activities.main.MainActivity": {
+      "drawable": "apps_binance",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.binance.dev/com.google.android.archive.ReactivateActivity": {
+      "drawable": "apps_binance",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.binance.us/com.binance.dev.SplashActivity": {
+      "drawable": "apps_binance",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
       ]
     },
     "com.binitex.pianochords/com.binitex.pianocompanionengine.SplashScreen": {
@@ -4356,6 +4552,20 @@
         "lawnicons"
       ]
     },
+    "com.blade.shadowcloudgaming/com.blade.shadow.DispatcherActivity": {
+      "drawable": "apps_shadow",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "com.blade.shadowcloudgaming/com.blade.shadow.dispatcher.DispatcherActivity": {
+      "drawable": "apps_shadow",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "com.blitzwallet/com.blitzwallet.MainActivity": {
       "drawable": "apps_wallet",
       "sources": [
@@ -4434,10 +4644,98 @@
         "arcticons"
       ]
     },
+    "com.booker.undertale/com.booker.undertale.RunnerActivity": {
+      "drawable": "apps_undertale",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
     "com.botpa.turbophotos/com.botpa.turbophotos.screens.home.HomeActivity": {
       "drawable": "system_gallery",
       "sources": [
         "arcticons"
+      ]
+    },
+    "com.box.android/com.box.android.activities.Authentication": {
+      "drawable": "apps_box",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.box.android/com.box.android.activities.SplashScreenActivity": {
+      "drawable": "apps_box",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.box.android/com.box.android.activities.login.SplashScreenActivity": {
+      "drawable": "apps_box",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.box.android/com.box.android.activities.phone.MainFromWidgetPhone": {
+      "drawable": "apps_box",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.box.android/com.box.android.activities.phone.MainPhone": {
+      "drawable": "apps_box",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.box.android/com.box.android.activities.tablet.MainTablet": {
+      "drawable": "apps_box",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.box.android/com.box.android.activity.ViewLaunchPage": {
+      "drawable": "apps_box",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.box.android/com.box.android.auth.AuthenticationActivity": {
+      "drawable": "apps_box",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.box.android/com.box.android.widget.FileActionsDialogActivity": {
+      "drawable": "apps_box",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.box.android/com.box.android.widget.FolderActionsDialogActivity": {
+      "drawable": "apps_box",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
       ]
     },
     "com.breadwallet/com.breadwallet.ui.MainActivity": {
@@ -4889,6 +5187,78 @@
         "lawnicons"
       ]
     },
+    "com.chucklefish.stardewvalley/com.byfen.archiver.MainActivity": {
+      "drawable": "apps_stardew_valley",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.chucklefish.stardewvalley/com.chucklefish.stardewvalley.MainActivity": {
+      "drawable": "apps_stardew_valley",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.chucklefish.stardewvalley/com.google.android.archive.ReactivateActivity": {
+      "drawable": "apps_stardew_valley",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.chucklefish.stardewvalley/com.komodias.mod.SS": {
+      "drawable": "apps_stardew_valley",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.chucklefish.stardewvalley/com.min.n.MainActivity": {
+      "drawable": "apps_stardew_valley",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.chucklefish.stardewvalley/com.releasedata.ReleaseDataActivity.SplashActivityKing": {
+      "drawable": "apps_stardew_valley",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.chucklefish.stardewvalley/crc64e8b22d3833b21ea5.MainActivity": {
+      "drawable": "apps_stardew_valley",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.chucklefish.stardewvalley/io.unity.sdk.android.UnityLauncher": {
+      "drawable": "apps_stardew_valley",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.chucklefish.stardewvalley/md5dee79b5aa46d0ac87adbcd4b193daa49.MainActivity": {
+      "drawable": "apps_stardew_valley",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
     "com.cisco.webex.meetings/com.cisco.webex.meetings.LauncherActivity": {
       "drawable": "apps_webex_meet",
       "sources": [
@@ -5180,6 +5550,27 @@
       "drawable": "system_weather",
       "sources": [
         "lawnicons"
+      ]
+    },
+    "com.commit451.gitlab/com.commit451.gitlab.activities.GitlabActivity": {
+      "drawable": "apps_gitlab",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "com.commit451.gitlab/com.commit451.gitlab.activity.GitlabActivity": {
+      "drawable": "apps_gitlab",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "com.commit451.gitlab/com.commit451.gitlab.activity.LaunchActivity": {
+      "drawable": "apps_gitlab",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
       ]
     },
     "com.computerlunch.evolution/com.byfen.archiver.MainActivity": {
@@ -5545,8 +5936,22 @@
         "lawnicons"
       ]
     },
+    "com.devolverdigital.enterthegungeon/com.unity3d.player.UnityPlayerActivity": {
+      "drawable": "apps_enter_the_gungeon",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "com.dfinstagram.android/com.instagram.android.activity.MainTabActivity": {
       "drawable": "apps_instagram",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "com.dgmltn.radiomg.somafm/com.dgmltn.radiomg.ui.main.MainActivity": {
+      "drawable": "apps_somafm",
+      "evidence": "desktop-exact-name+package-identity",
       "sources": [
         "arcticons"
       ]
@@ -5633,6 +6038,13 @@
       "drawable": "apps_qr_scanner",
       "sources": [
         "arcticons"
+      ]
+    },
+    "com.digitalextremes.warframemobile/com.digitalextremes.warframemobile.SplashActivity": {
+      "drawable": "apps_warframe",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "lawnicons"
       ]
     },
     "com.digitalpalette.mememakerpro/com.digitalpalette.meme.SplashActivity": {
@@ -6790,6 +7202,13 @@
         "arcticons"
       ]
     },
+    "com.e8tracks/com.e8tracks.ui.activities.LauncherActivity": {
+      "drawable": "apps_8tracks",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "com.ea.game.pvzfree_row/com.android.support.MainActivity": {
       "drawable": "games_plants_vs_zombies",
       "sources": [
@@ -7282,6 +7701,22 @@
         "arcticons"
       ]
     },
+    "com.farmerbb.taskbar.paid/com.farmerbb.taskbar.MainActivity": {
+      "drawable": "apps_taskbar",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.farmerbb.taskbar/com.farmerbb.taskbar.MainActivity": {
+      "drawable": "apps_taskbar",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
     "com.fastaccess.github.libre/com.fastaccess.ui.modules.main.MainActivity": {
       "drawable": "apps_fasthub",
       "sources": [
@@ -7392,6 +7827,12 @@
       "sources": [
         "arcticons",
         "lawnicons"
+      ]
+    },
+    "com.fitbit.FitbitMobile/com.fitbit.HealthBrandedAlias": {
+      "drawable": "apps_fitbit",
+      "sources": [
+        "device-verified"
       ]
     },
     "com.fitbit.FitbitMobile/com.fitbit.onboarding.landing.LandingActivity": {
@@ -7655,6 +8096,20 @@
         "arcticons"
       ]
     },
+    "com.flycast.emulator/com.flycast.emulator.MainActivity": {
+      "drawable": "apps_flycast",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "com.flycast.emulator/com.reicast.emulator.MainActivity": {
+      "drawable": "apps_flycast",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "com.fmwhatsapp/com.coocoo.activity.Alias68": {
       "drawable": "apps_whatsapp",
       "sources": [
@@ -7730,6 +8185,20 @@
     },
     "com.fungames.blockcraft/com.google.android.archive.ReactivateActivity": {
       "drawable": "games_minecraft",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "com.funnycat.virustotal/com.funnycat.virustotal.ui.splash.SplashActivity": {
+      "drawable": "apps_virustotal",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "lawnicons"
+      ]
+    },
+    "com.gabedeveloper.cuphead/com.unity3d.player.UnityPlayerActivity": {
+      "drawable": "apps_cuphead",
+      "evidence": "desktop-exact-name+package-identity",
       "sources": [
         "arcticons"
       ]
@@ -8184,6 +8653,13 @@
         "lawnicons"
       ]
     },
+    "com.gintoki.syncplay/com.cosmik.syncplay.SplashScreenActivity": {
+      "drawable": "apps_syncplay",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "com.giphy.messenger/com.giphy.messenger.app.MainActivity": {
       "drawable": "apps_giphy",
       "sources": [
@@ -8277,6 +8753,12 @@
       "drawable": "apps_qr_scanner",
       "sources": [
         "arcticons"
+      ]
+    },
+    "com.github.muellerma.coffee/com.github.muellerma.coffee.activities.MainActivity": {
+      "drawable": "apps_caffeine",
+      "sources": [
+        "device-verified"
       ]
     },
     "com.github.vauvenal5.yaga/com.github.vauvenal5.yaga.MainActivity": {
@@ -8734,6 +9216,12 @@
       "sources": [
         "arcticons",
         "lawnicons"
+      ]
+    },
+    "com.google.android.apps.tips/com.google.android.apps.tips.fortnite.p8": {
+      "drawable": "google_pixel_tipps",
+      "sources": [
+        "device-verified"
       ]
     },
     "com.google.android.apps.translate/.TranslateActivity": {
@@ -9526,6 +10014,13 @@
         "arcticons"
       ]
     },
+    "com.hadrian.deltarune/com.hadrian.deltarune.RunnerActivity": {
+      "drawable": "apps_deltarune",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "lawnicons"
+      ]
+    },
     "com.hagstrom.henrik.chess/com.hagstrom.henrik.boardgames.MainActivity": {
       "drawable": "games_chess",
       "sources": [
@@ -9822,6 +10317,46 @@
     "com.huawei.health/com.huawei.healthcloud.cardui.MainActivity": {
       "drawable": "apps_huawei_health",
       "sources": [
+        "lawnicons"
+      ]
+    },
+    "com.hulu.plus/com.hulu.features.splash.SplashActivity": {
+      "drawable": "apps_hulu",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.hulu.plus/com.hulu.plusx.activity.Root": {
+      "drawable": "apps_hulu",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.humble.SlayTheSpire/android.app.NativeActivity": {
+      "drawable": "apps_slay_the_spire",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.humble.SlayTheSpire/com.android.support.MainActivity": {
+      "drawable": "apps_slay_the_spire",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.humble.SlayTheSpire/com.humble.SlayTheSpire.MyLoaderActivity": {
+      "drawable": "apps_slay_the_spire",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
         "lawnicons"
       ]
     },
@@ -10702,6 +11237,13 @@
         "arcticons"
       ]
     },
+    "com.jagex.runescape.android/com.jagex.android.MainActivity": {
+      "drawable": "apps_runescape",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "com.jago.digitalBanking/com.example.digital_banking_app.MainActivity": {
       "drawable": "apps_jago",
       "sources": [
@@ -10762,6 +11304,21 @@
       "drawable": "apps_jetaudio",
       "sources": [
         "arcticons"
+      ]
+    },
+    "com.jetbrains.youtrack.mobile.app/com.jetbrains.youtrack.mobile.app.MainActivity": {
+      "drawable": "apps_youtrack",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "com.jherkenhoff.qalculate/com.jherkenhoff.qalculate.ui.MainActivity": {
+      "drawable": "apps_qalculate",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
       ]
     },
     "com.jio.myjio/com.jio.myjio.activities.StartAllAppView": {
@@ -10884,6 +11441,14 @@
     },
     "com.jobstreet.jobstreet/seek.base.deeplink.presentation.DeeplinkActivity": {
       "drawable": "apps_jobstreet",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.jockeholm.undertale/com.jockeholm.undertale.RunnerActivity": {
+      "drawable": "apps_undertale",
+      "evidence": "desktop-exact-name+package-identity",
       "sources": [
         "arcticons",
         "lawnicons"
@@ -11248,6 +11813,13 @@
         "arcticons"
       ]
     },
+    "com.kurtlourens.no_mans_sky_recipes/io.flutter.embedding.android.FlutterActivity": {
+      "drawable": "apps_no_mans_sky",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "com.l/com.l.ui.activity.MainActivity": {
       "drawable": "apps_listonic",
       "sources": [
@@ -11444,6 +12016,13 @@
       "sources": [
         "arcticons",
         "lawnicons"
+      ]
+    },
+    "com.libopenmw.openmw/ui.activity.MainActivity": {
+      "drawable": "apps_openmw",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
       ]
     },
     "com.libremobileos.glimpse/org.lineageos.glimpse.MainActivity": {
@@ -11731,6 +12310,14 @@
       "drawable": "apps_boom",
       "sources": [
         "arcticons"
+      ]
+    },
+    "com.logseq.app/com.logseq.app.MainActivity": {
+      "drawable": "apps_logseq",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
       ]
     },
     "com.lonelycatgames.pdf.viewer/com.pdf_reader.ui.SplashActivity": {
@@ -13833,6 +14420,13 @@
         "lawnicons"
       ]
     },
+    "com.naver.whale/com.google.android.apps.chrome.Main": {
+      "drawable": "apps_naver_whale",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "com.nbaimd.gametime.nba2011/com.nba.nextgen.splash.SplashActivity": {
       "drawable": "apps_nba",
       "sources": [
@@ -15549,6 +16143,13 @@
         "lawnicons"
       ]
     },
+    "com.pliablepixels.zmninja_pro/com.pliablepixels.zmninja_pro.MainActivity": {
+      "drawable": "apps_zmninja",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "com.pluscubed.matloglibre/com.pluscubed.logcat.ui.LogcatActivity": {
       "drawable": "apps_matlog",
       "sources": [
@@ -15752,6 +16353,22 @@
     "com.pubg.krmobile/com.epicgames.ue4.SplashActivity": {
       "drawable": "games_pubg",
       "sources": [
+        "lawnicons"
+      ]
+    },
+    "com.pultec.tobyfoxundertale/com.pultec.tobyfoxundertale.PirateCheck": {
+      "drawable": "apps_undertale",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.pultec.tobyfoxundertale/com.pultec.tobyfoxundertale.RunnerActivity": {
+      "drawable": "apps_undertale",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
         "lawnicons"
       ]
     },
@@ -16201,6 +16818,13 @@
         "lawnicons"
       ]
     },
+    "com.reddnek.syncplay/com.yuroyami.syncplay.HomeActivity": {
+      "drawable": "apps_syncplay",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "com.redfin.android/com.redfin.android.core.activity.launch.DefaultLaunchActivity": {
       "drawable": "apps_redfin",
       "sources": [
@@ -16228,6 +16852,14 @@
     },
     "com.remind101/com.remind101.ui.activities.WelcomeActivity": {
       "drawable": "apps_remind",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.remnote.v2/com.remnote.v2.MainActivity": {
+      "drawable": "apps_remnote",
+      "evidence": "desktop-exact-name+package-identity",
       "sources": [
         "arcticons",
         "lawnicons"
@@ -19362,6 +19994,13 @@
         "arcticons"
       ]
     },
+    "com.standardnotes/com.standardnotes.MainActivity": {
+      "drawable": "apps_standard_notes",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "lawnicons"
+      ]
+    },
     "com.starbox.callrecorder/com.starbox.callrecorder.activity.PermissionsActivity": {
       "drawable": "apps_drupe",
       "sources": [
@@ -19459,6 +20098,14 @@
         "arcticons"
       ]
     },
+    "com.streetwriters.notesnook/com.streetwriters.notesnook.MainActivity": {
+      "drawable": "apps_notesnook",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
     "com.stremio.beta/com.stremio.MainActivity": {
       "drawable": "apps_stremio",
       "sources": [
@@ -19546,6 +20193,21 @@
       "drawable": "games_chess",
       "sources": [
         "arcticons"
+      ]
+    },
+    "com.surfshark.vpnclient.android/com.surfshark.vpnclient.android.StartActivity": {
+      "drawable": "apps_surfshark",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.synology.dsdrive/com.synology.dsdrive.activity.SplashActivity": {
+      "drawable": "apps_synology_drive",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "lawnicons"
       ]
     },
     "com.syntellia.fleksy.keyboard/com.syntellia.fleksy.hostpage.hostactivity.HostActivity": {
@@ -19658,6 +20320,13 @@
         "arcticons"
       ]
     },
+    "com.teleca.jamendo/com.teleca.jamendo.activity.SplashscreenActivity": {
+      "drawable": "apps_jamendo",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "com.tencent.iglite/com.epicgames.ue4.SplashActivity": {
       "drawable": "games_pubg",
       "sources": [
@@ -19743,6 +20412,34 @@
         "arcticons"
       ]
     },
+    "com.tencent.qqmusic/com.google.android.apps.youtube.music.activities.MusicActivity": {
+      "drawable": "apps_qqmusic",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "lawnicons"
+      ]
+    },
+    "com.tencent.qqmusic/com.qihoo.util.StartActivity": {
+      "drawable": "apps_qqmusic",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "lawnicons"
+      ]
+    },
+    "com.tencent.qqmusic/com.tencent.qqmusic.activity.AppStarterActivity": {
+      "drawable": "apps_qqmusic",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "lawnicons"
+      ]
+    },
+    "com.tencent.qqmusiclite/com.tencent.qqmusiclite.SplashActivity": {
+      "drawable": "apps_qqmusic",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "lawnicons"
+      ]
+    },
     "com.tencent.tmgp.bilibili.deadcells.mobile/com.bilibili.deadcells.mobile.SplashActivity": {
       "drawable": "games_dead_cells",
       "sources": [
@@ -19781,6 +20478,13 @@
     },
     "com.tencent.tvoem.zte/com.tencent.qqlive.ona.activity.WelcomeActivity": {
       "drawable": "system_video",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "com.tencent.wemeet.app/com.tencent.wemeet.app.StartupActivity": {
+      "drawable": "apps_wemeet",
+      "evidence": "desktop-exact-name+package-identity",
       "sources": [
         "arcticons"
       ]
@@ -22339,6 +23043,13 @@
         "arcticons"
       ]
     },
+    "com.unciv.app/com.unciv.app.AndroidLauncher": {
+      "drawable": "apps_unciv",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "com.unicostudio.x2number/com.unity3d.player.UnityPlayerActivity": {
       "drawable": "games_2048",
       "sources": [
@@ -24376,6 +25087,13 @@
         "arcticons"
       ]
     },
+    "com.workflowy.android/com.workflowy.android.MainActivity": {
+      "drawable": "apps_workflowy",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "com.wstxda.gsl/com.wstxda.gsl.AssistantActivity": {
       "drawable": "google_assistant",
       "sources": [
@@ -24415,6 +25133,13 @@
     },
     "com.wstxda.gsl/com.wstxda.gsl.shortcuts.SearchShortcut": {
       "drawable": "google_lens",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "com.wunderkinder.wunderlistandroid/com.wunderkinder.wunderlistandroid.activity.WLMainFragmentActivity": {
+      "drawable": "apps_wunderlist",
+      "evidence": "desktop-exact-name+package-identity",
       "sources": [
         "arcticons"
       ]
@@ -24484,6 +25209,38 @@
     "com.yahoo.mobile.client.android.finance/com.yahoo.mobile.client.android.finance.activity.Main": {
       "drawable": "apps_yahoo_finance",
       "sources": [
+        "lawnicons"
+      ]
+    },
+    "com.yahoo.mobile.client.android.mail/com.google.android.archive.ReactivateActivity": {
+      "drawable": "apps_yahoo_mail",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.yahoo.mobile.client.android.mail/com.yahoo.mobile.client.android.mail.activity.MainActivity": {
+      "drawable": "apps_yahoo_mail",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.yahoo.mobile.client.android.mail/com.yahoo.mobile.client.android.mail.activity.MessageList": {
+      "drawable": "apps_yahoo_mail",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "com.yahoo.mobile.client.android.mail/com.yahoo.mobile.client.android.mail.activity.YahooMail": {
+      "drawable": "apps_yahoo_mail",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
         "lawnicons"
       ]
     },
@@ -24635,6 +25392,14 @@
         "lawnicons"
       ]
     },
+    "com.zane.stardewvalley/crc648e5438a58262f792.SMainActivity": {
+      "drawable": "apps_stardew_valley",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
     "com.zano_mobile/com.zano_mobile.MainActivity": {
       "drawable": "apps_wallet",
       "sources": [
@@ -24670,6 +25435,13 @@
       "sources": [
         "arcticons",
         "lawnicons"
+      ]
+    },
+    "com.zenkit.zenkit/com.zenkit.zenkit.MainActivity": {
+      "drawable": "apps_zenkit",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
       ]
     },
     "com.zentity.vodafone/com.zentity.vodafone.SplashScreenActivity": {
@@ -24859,6 +25631,22 @@
         "arcticons"
       ]
     },
+    "community.godot.docs/community.godot.docs.MainActivity": {
+      "drawable": "apps_godot",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "community.godot.twa/community.godot.twa.LauncherActivity": {
+      "drawable": "apps_godot",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
     "coocent.app.tools.soundmeter.noisedetector.pro/cn.coocent.tools.soundmeter.app.LaunchActivity": {
       "drawable": "apps_sound_meter",
       "sources": [
@@ -24919,6 +25707,12 @@
         "arcticons"
       ]
     },
+    "cz.nic.mobiledatovka/org.qtproject.qt.android.bindings.QtActivity": {
+      "drawable": "apps_datovka",
+      "sources": [
+        "device-verified"
+      ]
+    },
     "cz.rb.app.smartphonebanking/com.zentity.rbcz.activity.RootActivity": {
       "drawable": "apps_raiffeisen",
       "sources": [
@@ -24971,6 +25765,12 @@
       "drawable": "system_weather",
       "sources": [
         "arcticons"
+      ]
+    },
+    "de.blinkt.openvpn/de.blinkt.openvpn.activities.MainActivity": {
+      "drawable": "apps_openvpn",
+      "sources": [
+        "device-verified"
       ]
     },
     "de.danoeh.antennapod/de.danoeh.antennapod.activity.MainActivity": {
@@ -25052,6 +25852,12 @@
       "sources": [
         "arcticons",
         "lawnicons"
+      ]
+    },
+    "de.ph1b.audiobook/voice.app.features.MainActivity": {
+      "drawable": "apps_voice_audiobook_player",
+      "sources": [
+        "device-verified"
       ]
     },
     "de.santander.presentation/de.santander.presentation.launcher_80412c2814728a1e830d4d0e7ed57be2ead1e4e16395ee19a258af23c1d761a6": {
@@ -25220,6 +26026,27 @@
     },
     "defisuisse.thorwallet/defisuisse.thorwallet.MainActivity": {
       "drawable": "apps_wallet",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "design.codeux.authpass.fdroid/design.codeux.authpass.MainActivity": {
+      "drawable": "apps_authpass",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "design.codeux.authpass.sideload/design.codeux.authpass.MainActivity": {
+      "drawable": "apps_authpass",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "design.codeux.authpass/design.codeux.authpass.MainActivity": {
+      "drawable": "apps_authpass",
+      "evidence": "desktop-exact-name+package-identity",
       "sources": [
         "arcticons"
       ]
@@ -25910,6 +26737,14 @@
         "arcticons"
       ]
     },
+    "gr.cosmote.box/gr.cosmote.box.boxCode.activities.SplashScreenActivity": {
+      "drawable": "apps_box",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
     "gr.gov.dcc.wallet/gr.gov.dcc.wallet.MainActivity": {
       "drawable": "apps_wallet",
       "sources": [
@@ -26033,6 +26868,13 @@
         "arcticons"
       ]
     },
+    "im.kaidan.kaidan/org.qtproject.qt5.android.bindings.QtActivity": {
+      "drawable": "apps_kaidan",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "im.vector.app.debug/im.vector.application.features.Alias": {
       "drawable": "apps_element",
       "sources": [
@@ -26104,6 +26946,13 @@
         "arcticons"
       ]
     },
+    "info.cemu.cemu/info.cemu.cemu.MainActivity": {
+      "drawable": "apps_cemu",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "lawnicons"
+      ]
+    },
     "info.chezz.chezz/info.chezz.chezz.ActivitySplashScreen": {
       "drawable": "games_chess",
       "sources": [
@@ -26171,6 +27020,13 @@
         "arcticons"
       ]
     },
+    "io.cozy.drive.mobile/io.cozy.drive.mobile.MainActivity": {
+      "drawable": "apps_cozydrive",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "io.dehaas.chesser/io.dehaas.chesser.Welcome": {
       "drawable": "games_chess",
       "sources": [
@@ -26195,6 +27051,30 @@
         "arcticons"
       ]
     },
+    "io.filen.app/io.filen.app.MainActivity": {
+      "drawable": "apps_filen",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "io.freetubeapp.freetube/io.freetubeapp.freetube": {
+      "drawable": "apps_freetube",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "io.freetubeapp.freetube/io.freetubeapp.freetube.MainActivity": {
+      "drawable": "apps_freetube",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
     "io.github.abhishekabhi789.lyricsforpoweramp/io.github.abhishekabhi789.lyricsforpoweramp.MainActivity": {
       "drawable": "apps_quicklyric",
       "sources": [
@@ -26217,6 +27097,13 @@
       "drawable": "apps_print",
       "sources": [
         "lawnicons"
+      ]
+    },
+    "io.github.divverent.aaaaxy/io.github.divverent.aaaaxy.MainActivity": {
+      "drawable": "apps_aaaaxy",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
       ]
     },
     "io.github.forkmaintainers.iceraven/io.github.forkmaintainers.iceraven.AppGradientSunset": {
@@ -26505,6 +27392,20 @@
         "lawnicons"
       ]
     },
+    "james.dsp/james.dsp.activity.DSPManager": {
+      "drawable": "apps_jamesdsp",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "james.dsp/me.timschneeberger.rootlessjamesdsp.activity.MainActivity": {
+      "drawable": "apps_jamesdsp",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "jp.amazon.mShop.android/com.amazon.mShop.android.AmazonActivity": {
       "drawable": "apps_amazon_store",
       "sources": [
@@ -26558,6 +27459,14 @@
       "drawable": "apps_user_manual",
       "sources": [
         "arcticons"
+      ]
+    },
+    "jp.co.yahoo.android.ymail/jp.co.yahoo.android.ymail.YMailStartActivity": {
+      "drawable": "apps_yahoo_mail",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
       ]
     },
     "jp.eqs.apps/jp.eqs.apps.barcode.BarcodeScannerActivity": {
@@ -27210,6 +28119,20 @@
         "lawnicons"
       ]
     },
+    "net.gcompris.full/net.gcompris.GComprisActivity": {
+      "drawable": "apps_gcompris",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "net.gcompris/net.gcompris.GComprisActivity": {
+      "drawable": "apps_gcompris",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "net.gsantner.markor/net.gsantner.markor.activity.openeditor.OpenEditorQuickNoteActivity": {
       "drawable": "apps_markor",
       "sources": [
@@ -27275,6 +28198,14 @@
       "drawable": "games_minetest",
       "sources": [
         "arcticons"
+      ]
+    },
+    "net.mkg20001.zeronet/org.kivy.android.PythonActivity": {
+      "drawable": "apps_zeronet",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
       ]
     },
     "net.moneykit.sbw/net.moneykit.sbw.SBWBaseActivity": {
@@ -27377,6 +28308,21 @@
         "arcticons"
       ]
     },
+    "net.sekg.antidote/net.sekg.antidote.MainActivity": {
+      "drawable": "apps_antidote",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "net.sourceforge.kid3/net.sourceforge.kid3.Kid3Activity": {
+      "drawable": "apps_kid3",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
     "net.syncthing.lite/net.syncthing.lite.activities.MainActivity": {
       "drawable": "apps_syncthing",
       "sources": [
@@ -27395,10 +28341,98 @@
         "arcticons"
       ]
     },
+    "net.tandem/net.tandem.ui.MainActivity": {
+      "drawable": "apps_tandem",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "net.thunderbird.android.beta/com.fsck.k9.activity.MainActivity": {
+      "drawable": "apps_thunderbird",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "net.thunderbird.android/com.fsck.k9.activity.MainActivity": {
+      "drawable": "apps_thunderbird",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "net.thunderbird.android/com.fsck.k9.activity.MessageList": {
+      "drawable": "apps_thunderbird",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "net.thunderbird.android/net.thunderbird.android.ThunderbirdApp": {
+      "drawable": "apps_thunderbird",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "net.thunderbird.android/net.thunderbird.app.common.MainActivity": {
+      "drawable": "apps_thunderbird",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "net.torguard.openvpn.client/net.torguard.openvpn.client.LauncherActivity": {
+      "drawable": "apps_torguard",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "net.torguard.openvpn.client/net.torguard.openvpn.client.MainActivity": {
+      "drawable": "apps_torguard",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
     "net.vsmart.vphotos/com.android.gallery3d.app.GalleryActivity": {
       "drawable": "system_gallery",
       "sources": [
         "arcticons"
+      ]
+    },
+    "net.waterfox.android.release/net.waterfox.android.release.App": {
+      "drawable": "apps_waterfox",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "net.waterfox.waterfox/net.waterfox.waterfox.App": {
+      "drawable": "apps_waterfox",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "net.xmind.doughnut/net.xmind.doughnut.MainActivity": {
+      "drawable": "apps_xmind",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
       ]
     },
     "net.zedge.android/com.google.android.archive.ReactivateActivity": {
@@ -27803,6 +28837,13 @@
         "lawnicons"
       ]
     },
+    "org.airvpn.eddie/org.airvpn.eddie.MainActivity": {
+      "drawable": "apps_airvpn",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "lawnicons"
+      ]
+    },
     "org.andstatus.game2048/org.andstatus.game2048.MainActivity": {
       "drawable": "games_2048",
       "sources": [
@@ -27815,6 +28856,20 @@
       "sources": [
         "arcticons",
         "lawnicons"
+      ]
+    },
+    "org.artsoft.rocksndiamonds/org.artsoft.rocksndiamonds.RocksNDiamonds": {
+      "drawable": "apps_rocksndiamonds",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "org.artsoft.rocksndiamonds/org.artsoft.rocksndiamonds.rocksndiamonds": {
+      "drawable": "apps_rocksndiamonds",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
       ]
     },
     "org.awallet.free/org.awallet.ui.HomeActivity": {
@@ -27916,6 +28971,14 @@
         "lawnicons"
       ]
     },
+    "org.cromite.cromite/com.google.android.apps.chrome.Main": {
+      "drawable": "apps_cromite",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
     "org.cryptomator.lite/org.cryptomator.presentation.ui.activity.VaultListActivity": {
       "drawable": "apps_cryptomator",
       "sources": [
@@ -27928,6 +28991,13 @@
       "sources": [
         "arcticons",
         "lawnicons"
+      ]
+    },
+    "org.deluge.trireme/org.deluge.trireme.MainActivity": {
+      "drawable": "apps_deluge",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
       ]
     },
     "org.edx.mobile/org.edx.mobile.view.MainDashboardActivity": {
@@ -27952,6 +29022,20 @@
     },
     "org.elnix.notes/org.elnix.notes.activities.MainActivity": {
       "drawable": "system_notes_2",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "org.famistudio/crc64a10958aa5b7794e0.FamiStudioForm": {
+      "drawable": "apps_famistudio",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "org.famistudio/crc64a10958aa5b7794e0.FamiStudioWindow": {
+      "drawable": "apps_famistudio",
+      "evidence": "desktop-exact-name+package-identity",
       "sources": [
         "arcticons"
       ]
@@ -28138,6 +29222,66 @@
         "arcticons"
       ]
     },
+    "org.gnu.icecat/org.gnu.icecat.App": {
+      "drawable": "apps_icecat",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "org.godotengine.editor.v3/org.godotengine.editor.GodotProjectManager": {
+      "drawable": "apps_godot",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "org.godotengine.editor.v4/org.godotengine.editor.GodotEditor": {
+      "drawable": "apps_godot",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "org.godotengine.editor.v4/org.godotengine.editor.GodotProjectManager": {
+      "drawable": "apps_godot",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "org.godotengine.editor.v4/org.godotengine.editor.ProjectManager": {
+      "drawable": "apps_godot",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "org.herac.tuxguitar.android.activity.admob/org.herac.tuxguitar.android.activity.TGActivity": {
+      "drawable": "apps_tuxguitar",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "org.herac.tuxguitar.android.application/org.herac.tuxguitar.android.activity.TGActivity": {
+      "drawable": "apps_tuxguitar",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "org.hndteam.deltarune/org.hndteam.deltarune.RunnerActivity": {
+      "drawable": "apps_deltarune",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "lawnicons"
+      ]
+    },
     "org.hzontal.tellaFOSS/rs.readahead.washington.mobile.views.activity.AliasCalculatorPlus": {
       "drawable": "system_calculator",
       "sources": [
@@ -28230,6 +29374,20 @@
         "lawnicons"
       ]
     },
+    "org.kde.alligator/org.qtproject.qt.android.bindings.QtActivity": {
+      "drawable": "apps_alligator",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "org.kde.alligator/org.qtproject.qt5.android.bindings.QtActivity": {
+      "drawable": "apps_alligator",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "org.kde.elisa/org.kde.elisa.ElisaActivity": {
       "drawable": "apps_elisa",
       "sources": [
@@ -28238,6 +29396,33 @@
     },
     "org.kde.elisa/org.qtproject.qt.android.bindings.QtActivity": {
       "drawable": "apps_elisa",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "org.kde.kdeconnect_tp/org.kde.kdeconnect.ui.MainActivity": {
+      "drawable": "apps_kdeconnect",
+      "sources": [
+        "device-verified"
+      ]
+    },
+    "org.kde.keysmith/org.qtproject.qt.android.bindings.QtActivity": {
+      "drawable": "apps_keysmith",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "org.kde.keysmith/org.qtproject.qt5.android.bindings.QtActivity": {
+      "drawable": "apps_keysmith",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
+    "org.kde.tokodon/org.qtproject.qt.android.bindings.QtActivity": {
+      "drawable": "apps_tokodon",
+      "evidence": "desktop-exact-name+package-identity",
       "sources": [
         "arcticons"
       ]
@@ -28296,6 +29481,14 @@
     },
     "org.koreader.launcher/org.koreader.launcher.MainActivity": {
       "drawable": "apps_koreader",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "org.krita/org.krita.android.MainActivity": {
+      "drawable": "apps_krita",
+      "evidence": "desktop-exact-name+package-identity",
       "sources": [
         "arcticons",
         "lawnicons"
@@ -28369,6 +29562,13 @@
         "lawnicons"
       ]
     },
+    "org.ld.deltarune/org.ld.deltarune.RunnerActivity": {
+      "drawable": "apps_deltarune",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "lawnicons"
+      ]
+    },
     "org.leafos.glimpse/org.lineageos.glimpse.MainActivity": {
       "drawable": "system_gallery",
       "sources": [
@@ -28421,6 +29621,13 @@
         "lawnicons"
       ]
     },
+    "org.milkytracker.sdl/org.milkytracker.sdl.MainActivity": {
+      "drawable": "apps_milkytracker",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "org.mopria.printplugin/com.google.android.archive.ReactivateActivity": {
       "drawable": "apps_print",
       "sources": [
@@ -28449,6 +29656,13 @@
       "drawable": "apps_miui_scanner",
       "sources": [
         "lawnicons"
+      ]
+    },
+    "org.mozc.android.inputmethod.japanese/org.mozc.android.inputmethod.japanese.LauncherActivity": {
+      "drawable": "apps_mozc",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
       ]
     },
     "org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppCuddling": {
@@ -28516,6 +29730,12 @@
       "drawable": "apps_fennec",
       "sources": [
         "arcticons"
+      ]
+    },
+    "org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppRetro2004": {
+      "drawable": "apps_fennec",
+      "sources": [
+        "device-verified"
       ]
     },
     "org.mozilla.fennec_fdroid/org.mozilla.fennec_fdroid.AppSolidBlue": {
@@ -28947,6 +30167,14 @@
         "lawnicons"
       ]
     },
+    "org.purplei2p.i2pd/org.purplei2p.i2pd.I2PDPermsAskerActivity": {
+      "drawable": "apps_i2pd",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
     "org.readera.cn/com.readera.MainActivity": {
       "drawable": "apps_readera",
       "sources": [
@@ -29011,6 +30239,13 @@
     },
     "org.scummvm.scummvm/org.scummvm.scummvm.MainActivity": {
       "drawable": "games_scummvm",
+      "sources": [
+        "lawnicons"
+      ]
+    },
+    "org.sdrangel/org.sdrangel.SDRangelActivity": {
+      "drawable": "apps_sdrangel",
+      "evidence": "desktop-exact-name+package-identity",
       "sources": [
         "lawnicons"
       ]
@@ -29299,6 +30534,38 @@
         "arcticons"
       ]
     },
+    "org.uzuy.uzuy_emu/org.uzuy.uzuy_emu.ui.main.MainActivity": {
+      "drawable": "apps_yuzu",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "org.vita3k.emulator.ikhoeyZX/org.vita3k.emulator.Emulator": {
+      "drawable": "apps_vita3k",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "org.vita3k.emulator/org.vita3k.emulator.Emulator": {
+      "drawable": "apps_vita3k",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "org.vita3k.emulator/org.vita3k.emulator.MainActivity": {
+      "drawable": "apps_vita3k",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
     "org.wikipedia/org.wikipedia.DefaultIcon": {
       "drawable": "apps_wikipedia",
       "sources": [
@@ -29395,6 +30662,22 @@
     },
     "org.xbmc.kore/org.xbmc.kore.ui.RemoteActivity": {
       "drawable": "apps_kore",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "org.yuzu.yuzu_emu.ea/org.yuzu.yuzu_emu.ui.main.MainActivity": {
+      "drawable": "apps_yuzu",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "org.yuzu.yuzu_emu/org.yuzu.yuzu_emu.ui.main.MainActivity": {
+      "drawable": "apps_yuzu",
+      "evidence": "desktop-exact-name+package-identity",
       "sources": [
         "arcticons",
         "lawnicons"
@@ -29661,6 +30944,22 @@
       "drawable": "apps_substratum",
       "sources": [
         "arcticons"
+      ]
+    },
+    "proton.android.pass.fdroid/proton.android.pass.ui.MainActivity": {
+      "drawable": "apps_proton_pass",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "proton.android.pass/proton.android.pass.ui.MainActivity": {
+      "drawable": "apps_proton_pass",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
       ]
     },
     "pt.mcdonalds/pt.mcdonalds.android.ui.intro.splash.SplashActivity": {
@@ -30559,6 +31858,13 @@
         "lawnicons"
       ]
     },
+    "space.rocketnine.xenia/space.rocketnine.xenia.MainActivity": {
+      "drawable": "apps_xenia",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons"
+      ]
+    },
     "speaker.cleaner.water.remover.water.eject.liquid.remover.dust/speaker.cleaner.water.remover.water.eject.liquid.remover.dust.ui.activity.SplashActivity": {
       "drawable": "apps_speaker_cleaner",
       "sources": [
@@ -30704,6 +32010,22 @@
       "drawable": "apps_twitch",
       "sources": [
         "arcticons"
+      ]
+    },
+    "tv.parsec.client/com.google.android.archive.ReactivateActivity": {
+      "drawable": "apps_parsec",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
+      ]
+    },
+    "tv.parsec.client/tv.parsec.client.MainActivity": {
+      "drawable": "apps_parsec",
+      "evidence": "desktop-exact-name+package-identity",
+      "sources": [
+        "arcticons",
+        "lawnicons"
       ]
     },
     "tv.plex.app/tv.plex.app.MainActivity": {
