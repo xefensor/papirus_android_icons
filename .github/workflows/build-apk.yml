@@ -8,69 +8,198 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  artwork-audit:
+  cleanup-json-escaping:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    steps:
+    - name: Checkout PR branch
+      uses: actions/checkout@v5
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
 
+    - name: Restore pre-existing JSON escapes
+      run: |
+        python3 - <<'PY'
+        from pathlib import Path
+        path = Path('data.json')
+        text = path.read_text()
+        replacements = {
+            'kd.᫘ᫎ᫉': r'kd.\u1ad8\u1ace\u1ac9',
+            'kd.᫛ࡥ࡭': r'kd.\u1adb\u0865\u086d',
+            'vv.乊οน': r'vv.\u4e4a\u03bf\u0e19',
+        }
+        changed = 0
+        for old, new in replacements.items():
+            if old in text:
+                text = text.replace(old, new)
+                changed += 1
+        path.write_text(text)
+        print(f'Restored {changed} pre-existing escaped component strings')
+        PY
+
+    - name: Commit cleanup
+      run: |
+        if git diff --quiet -- data.json; then
+          echo 'No cleanup needed.'
+          exit 0
+        fi
+        git config user.name 'github-actions[bot]'
+        git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+        git add data.json
+        git commit -m 'Preserve existing JSON component escaping'
+        git push origin HEAD:${{ github.event.pull_request.head.ref }}
+
+  missing-app-external-audit:
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout code
       uses: actions/checkout@v5
 
+    - name: Scan remaining device packages in Arcticons and Lawnicons
+      run: |
+        python3 - <<'PY'
+        import importlib.util
+        from pathlib import Path
+
+        spec = importlib.util.spec_from_file_location('sync', 'scripts/sync_external_mappings.py')
+        sync = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(sync)
+
+        packages = '''
+        com.bootiq2.gtsisic
+        cz.alza.eshop
+        com.alexmercerind.audire
+        com.blackmagicdesign.android.blackmagiccam
+        com.capyreader.app
+        app.comaps
+        cz.dpmcb.dpmcb
+        cz.gov.edoklady
+        com.eta.etabodybalance
+        cz.xefensor.gingeroldicons
+        helium314.keyboard
+        io.homeassistant.companion.android
+        com.huawei.smartaudio
+        com.openai.chatgpt
+        cz.mafra.jizdnirady
+        com.github.libretube
+        org.listenbrainz.android
+        com.example.luredin
+        com.wbrawner.simplemarkdown.free
+        com.metrolist.music
+        com.manichord.mgit
+        cz.o2.moje
+        cz.nic.mojeid.key.android
+        cz.cd.mujvlak.an
+        com.artifex.mupdf.viewer.app
+        com.wakdev.wdnfc
+        com.google.android.apps.pixel.nowplaying
+        org.openfoodfacts.scanner
+        cz.xefensor.oxygenkiss
+        coredevices.coreapp
+        org.framasoft.peertube
+        com.google.android.apps.wearables.maestro.companion
+        com.daniebeler.pfpixelix
+        com.google.android.apps.weather
+        cz.chmu.pocasi
+        cz.rb.edi
+        chat.simplex.app
+        com.forrestguice.suntimeswidget
+        com.cappielloantonio.notquitemy.tempo
+        com.dessalines.thumbkey
+        de.moekadu.tuner
+        cz.ulekare.app
+        com.abitdo.advance
+        app.vger.voyager
+        com.deniscerri.ytdl
+        com.medicalit.zachranka
+        '''.split()
+
+        db = sync.load_database(Path('data.json'))
+        normalized_targets = {}
+        for drawable in db:
+            normalized_targets.setdefault(sync.normalize_drawable(drawable), []).append(drawable)
+
+        found = {pkg: [] for pkg in packages}
+        for source_name, url in sync.SOURCES.items():
+            groups = sync.parse_appfilter(sync.read_source(url))
+            for drawable, components in groups.items():
+                hits = sorted(c for c in components if c.split('/', 1)[0] in found)
+                if not hits:
+                    continue
+                norm = sync.normalize_drawable(drawable)
+                papirus_same_name = normalized_targets.get(norm, [])
+                for component in hits:
+                    pkg = component.split('/', 1)[0]
+                    found[pkg].append((source_name, drawable, component, papirus_same_name))
+
+        print('=== DEVICE PACKAGE EXTERNAL MATCHES ===')
+        for pkg in packages:
+            rows = found[pkg]
+            if not rows:
+                continue
+            print(f'\n{pkg}')
+            seen = set()
+            for source, drawable, component, papirus_same_name in rows:
+                key = (source, drawable, component)
+                if key in seen:
+                    continue
+                seen.add(key)
+                print(f'  {source}: {drawable} :: {component}')
+                if papirus_same_name:
+                    print(f'    EXACT PAPIRUS DRAWABLE NAME: {papirus_same_name}')
+        print('\n=== NO EXTERNAL MATCH ===')
+        for pkg in packages:
+            if not found[pkg]:
+                print(pkg)
+        PY
+
+  artwork-audit:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v5
     - name: Validate maintenance scripts
       run: python3 -m py_compile scripts/*.py
-
     - name: Check desktop Papirus Android candidates
       run: |
-        git clone --depth 1 --filter=blob:none --sparse \
-          https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git /tmp/papirus-icon-theme
+        git clone --depth 1 --filter=blob:none --sparse https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git /tmp/papirus-icon-theme
         git -C /tmp/papirus-icon-theme sparse-checkout set Papirus/64x64/apps
         python3 scripts/sync_android_artwork.py /tmp/papirus-icon-theme --list
 
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v5
-
     - name: Set up JDK
       uses: actions/setup-java@v5
       with:
         distribution: 'temurin'
         java-version: '17'
-
     - name: Validate maintenance scripts
       run: python3 -m py_compile scripts/*.py
-
     - name: Validate external mapping sync is idempotent
       run: |
         cp data.json /tmp/papirus-data.json
         cp external-mappings.json /tmp/papirus-external-mappings.json
-        python3 scripts/sync_external_mappings.py \
-          --db /tmp/papirus-data.json \
-          --provenance /tmp/papirus-external-mappings.json \
-          --write
+        python3 scripts/sync_external_mappings.py --db /tmp/papirus-data.json --provenance /tmp/papirus-external-mappings.json --write
         cmp data.json /tmp/papirus-data.json
         cmp external-mappings.json /tmp/papirus-external-mappings.json
-
     - name: Validate tracked appfilter
       run: |
-        DB_FILE=./data.json APPFILTER_FILE=/tmp/papirus-appfilter.xml \
-          python3 scripts/generate_appfilter.py
+        DB_FILE=./data.json APPFILTER_FILE=/tmp/papirus-appfilter.xml python3 scripts/generate_appfilter.py
         cmp app/src/main/assets/appfilter.xml /tmp/papirus-appfilter.xml
-
     - name: Install SVG renderer
       run: |
         if ! command -v inkscape >/dev/null; then
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends inkscape
         fi
-
     - name: Generate icon pack resources
       run: make VALIDATE=false build
-
     - name: Verify generated icon bitmaps
       run: |
         svg_count=$(find src -maxdepth 1 -name '*.svg' | wc -l)
@@ -78,19 +207,15 @@ jobs:
         echo "SVG icons: $svg_count"
         echo "Generated PNG icons: $png_count"
         test "$svg_count" -eq "$png_count"
-
     - name: Make gradlew executable
       run: chmod +x ./gradlew
-
     - name: Build release and installable test APKs
       run: ./gradlew assembleRelease assembleDebug
-
     - name: Upload release APK
       uses: actions/upload-artifact@v4
       with:
         name: app-release-apk
         path: app/build/outputs/apk/release/*.apk
-
     - name: Upload installable test APK
       uses: actions/upload-artifact@v4
       with:
