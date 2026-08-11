@@ -6,12 +6,13 @@ uses mapping overlap:
 
 1. Read Papirus' existing component -> drawable mapping from data.json.
 2. Group an external appfilter.xml by its drawable.
-3. If components in one external drawable group overlap exactly one Papirus
-   drawable, infer that the whole external group represents that Papirus icon.
+3. If components in one external drawable group overlap exactly one unambiguous
+   Papirus drawable, infer that the whole external group represents that icon.
 4. Add only previously unknown components from that unambiguous group.
 
-This lets actively maintained packs teach us new package/activity aliases while
-keeping Papirus' existing artwork and mapping decisions authoritative.
+Some legacy Papirus mappings assign the same component to multiple drawables.
+Those components are preserved but ignored as inference evidence, so existing
+ambiguity cannot teach the importer a new potentially-wrong mapping.
 """
 
 from __future__ import annotations
@@ -48,28 +49,16 @@ def load_database(path: Path) -> dict[str, list[str]]:
     return data
 
 
-def reverse_database(data: dict[str, list[str]]) -> dict[str, str]:
-    result: dict[str, str] = {}
-    duplicates: dict[str, set[str]] = defaultdict(set)
+def reverse_database(data: dict[str, list[str]]) -> dict[str, set[str]]:
+    result: dict[str, set[str]] = defaultdict(set)
 
     for drawable, components in data.items():
         if not isinstance(components, list):
             raise ValueError(f"{drawable!r} must map to a list")
         for component in components:
-            normalized = normalize_component(component)
-            if normalized in result and result[normalized] != drawable:
-                duplicates[normalized].update((result[normalized], drawable))
-            else:
-                result[normalized] = drawable
+            result[normalize_component(component)].add(drawable)
 
-    if duplicates:
-        sample = next(iter(duplicates.items()))
-        raise ValueError(
-            "Papirus data.json contains components assigned to multiple icons; "
-            f"cannot infer safely. Example: {sample[0]} -> {sorted(sample[1])}"
-        )
-
-    return result
+    return dict(result)
 
 
 def read_source(source: str) -> bytes:
@@ -149,13 +138,17 @@ def main() -> int:
 
     data = load_database(args.db)
     reverse = reverse_database(data)
+    ambiguous_existing = {component for component, targets in reverse.items() if len(targets) > 1}
 
     additions: dict[str, set[str]] = defaultdict(set)
     conflicts: list[tuple[str, str, list[str]]] = []
     unresolved = 0
     learned_groups = 0
 
-    print(f"Papirus: {len(data)} icons, {len(reverse)} component mappings")
+    print(
+        f"Papirus: {len(data)} icons, {len(reverse)} unique components, "
+        f"{len(ambiguous_existing)} existing ambiguous components"
+    )
 
     for source_name, source in sources:
         print(f"\n[{source_name}] reading {source}")
@@ -166,7 +159,11 @@ def main() -> int:
         source_unresolved = 0
 
         for external_drawable, components in groups.items():
-            targets = {reverse[c] for c in components if c in reverse}
+            targets: set[str] = set()
+            for component in components:
+                known_targets = reverse.get(component)
+                if known_targets and len(known_targets) == 1:
+                    targets.update(known_targets)
 
             if len(targets) == 1:
                 target = next(iter(targets))
