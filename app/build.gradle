@@ -4,11 +4,13 @@ android {
     compileSdk rootProject.ext.CompileSdk
 
     defaultConfig {
-        applicationId "io.github.PapirusDevelopmentTeam.papirus_icons"
+        // Keep the inherited Java namespace below for now, but give the maintained
+        // fork its own install identity so it can coexist with older Papirus builds.
+        applicationId "io.github.xefensor.papirus_icons"
         minSdkVersion rootProject.ext.MinSdk
         targetSdkVersion rootProject.ext.TargetSdk
-        versionCode 10
-        versionName "20250904"
+        versionCode 11
+        versionName "20260811"
     }
 
     bundle {
@@ -29,8 +31,9 @@ android {
         }
     }
 
+    // Keep the original namespace to avoid needless source-package churn. This is
+    // internal implementation detail; applicationId above is the public app ID.
     namespace 'io.github.PapirusDevelopmentTeam.papirus_icons'
-
 
     lint {
         abortOnError false
@@ -38,7 +41,6 @@ android {
 }
 
 base {
-    // Output file name
     archivesName = "${parent.name}-${android.defaultConfig.versionCode}"
 }
 
@@ -49,19 +51,7 @@ java {
 }
 
 dependencies {
-    /*
-     * CandyBar Material Dashboard Library
-     *
-     * TODO: How to update the dashboard?!
-     * Check this update guide for every version
-     *      - https://github.com/zixpo/candybar-sample/wiki/Updating-the-dashboard
-     * If you've missed some versions you've to also follow update guide for those versions
-     */
-
     implementation 'com.github.Donnnno:candybar-foss:3.21.3'
-
-    // TODO: Remove `//` below to enable OneSignal
-    //implementation 'com.onesignal:OneSignal:[5.0.0, 5.99.99]'
 }
 
 // Code for automatically copying appfilter.xml and drawable.xml

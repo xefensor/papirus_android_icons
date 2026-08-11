@@ -1,8 +1,12 @@
 {
-  "latestVersion": "20250904",
-  "latestVersionCode": 10,
-  "url": "https://github.com/miraficus/papirus_android_icons/releases",
+  "latestVersion": "20260811",
+  "latestVersionCode": 11,
+  "url": "https://github.com/xefensor/papirus_android_icons/releases",
   "releaseNotes": [
-    "Added support for some GrapheneOS and Fossify apps"
+    "Maintained community fork identity and update links",
+    "Desktop Papirus artwork sync and Android relevance audit",
+    "84 verified desktop Papirus icons added",
+    "Thousands of Android component mappings refreshed",
+    "Eight launcher component fixes verified on a real device"
   ]
 }
