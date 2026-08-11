@@ -29,7 +29,7 @@ Development/test APKs are also produced by GitHub Actions for pull requests. Deb
 
 ## Icon requests
 
-The old email-based icon request endpoint from the abandoned Android package is intentionally disabled because it pointed to a previous maintainer's personal address. Missing apps can still be identified with CandyBar's missing-icon report and audited with the maintenance tooling in this repository.
+The abandoned email-based icon request endpoint is intentionally disabled because it pointed to a previous maintainer's personal address. Missing apps can still be identified with CandyBar's missing-icon report and audited with the maintenance tooling in this repository.
 
 `scripts/audit_icon_request.py` accepts the plain-text CandyBar Icon Request report and separates already-covered components, stale launcher activities, external icon-pack identities and genuinely missing artwork.
 
@@ -48,21 +48,11 @@ python3 scripts/sync_desktop_icons.py ../papirus-icon-theme \
   --upstream-ref "$(git -C ../papirus-icon-theme rev-parse HEAD)"
 ```
 
-Desktop aliases/symlinks are skipped rather than duplicated. Normalized filename collisions are reported for manual review.
-
 ### Android-relevant artwork sync
 
 `scripts/sync_android_artwork.py` discovers brand-new Android-relevant icons from desktop Papirus. It combines desktop artwork with Arcticons and Lawnicons mappings and auto-imports only candidates with strong identity evidence.
 
-A new icon must:
-
-- have an exact normalized drawable-name match between canonical desktop Papirus artwork and an Android icon-pack drawable,
-- not replace existing Android SVG artwork,
-- not reuse an Android component already mapped elsewhere,
-- have app identity represented in the Android package name itself, and
-- pass `artwork-sync-policy.json` limits and collision exclusions.
-
-Activity names are intentionally not treated as identity evidence. Candidates that cannot be proven safely are reported as `REVIEW` rather than guessed.
+Candidates that cannot be proven safely are reported as `REVIEW` rather than guessed.
 
 ```bash
 git clone https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git ../papirus-icon-theme
@@ -85,23 +75,12 @@ Imported desktop artwork is recorded in `desktop-sync.json`. Imported mappings a
 
 `data.json` is the authoritative Papirus component database. `scripts/sync_external_mappings.py` can learn additional package/activity variants from Arcticons and Lawnicons without fuzzy app-name matching.
 
-An external drawable group is accepted only when it already points to one Papirus icon and either its normalized drawable name matches or at least two trusted existing components independently connect the group to that same Papirus icon.
-
 Mappings imported from external packs, and mappings verified manually on devices, are provenance-tracked and excluded from later inference. This prevents one accepted mapping from recursively teaching the importer unrelated mappings.
 
 ```bash
 python3 scripts/sync_external_mappings.py
 python3 scripts/sync_external_mappings.py --source arcticons
 python3 scripts/sync_external_mappings.py --source lawnicons
-```
-
-To apply trusted inferred mappings:
-
-```bash
-python3 scripts/sync_external_mappings.py --write
-DB_FILE=./data.json APPFILTER_FILE=./app/src/main/assets/appfilter.xml \
-  python3 scripts/generate_appfilter.py
-make test
 ```
 
 ## Building
