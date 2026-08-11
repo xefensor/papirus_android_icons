@@ -52,9 +52,16 @@ Desktop aliases/symlinks are currently skipped rather than duplicated. Normalize
 
 Artwork synchronization and Android app/component mapping are intentionally separate jobs. `data.json` remains the authoritative Papirus mapping database.
 
-`scripts/sync_external_mappings.py` can safely learn additional package/activity variants from actively maintained Android icon projects. The current built-in sources are Arcticons and Lawnicons.
+`scripts/sync_external_mappings.py` can learn additional package/activity variants from actively maintained Android icon projects. The built-in sources are Arcticons and Lawnicons.
 
-The mapping sync does **not** guess from app names. It groups each external pack by drawable and only learns a mapping when that external drawable already shares one or more known Android components with exactly one Papirus icon. All additional components in that unambiguous group can then be assigned to the same Papirus icon. Ambiguous groups are skipped.
+The mapping sync deliberately does **not** fuzzy-match app names. An external drawable group is accepted only when it already points to exactly one Papirus icon and has strong evidence for that relationship:
+
+- its normalized drawable name matches the Papirus drawable name, or
+- at least two existing trusted Android components independently link the external group to the same Papirus icon.
+
+Groups that point to multiple Papirus icons, weak single-component matches, and new components for which different sources disagree are skipped rather than guessed.
+
+Mappings imported from external packs are recorded in `external-mappings.json`. They are never reused as evidence on later synchronization runs, preventing imported mappings from recursively teaching the importer more mappings.
 
 Dry-run both built-in sources:
 
@@ -69,15 +76,16 @@ python3 scripts/sync_external_mappings.py --source arcticons
 python3 scripts/sync_external_mappings.py --source lawnicons
 ```
 
-Apply only unambiguous inferred mappings:
+Apply trusted inferred mappings and regenerate the tracked appfilter:
 
 ```bash
 python3 scripts/sync_external_mappings.py --write
-make pretty
+DB_FILE=./data.json APPFILTER_FILE=./app/src/main/assets/appfilter.xml \
+  python3 scripts/generate_appfilter.py
 make test
 ```
 
-The existing in-app Icon Request feature remains the fallback for applications that cannot be resolved from upstream mapping overlap.
+CI checks that external mapping sync is idempotent, the tracked `assets/appfilter.xml` is generated from `data.json`, and the release APK still builds. The existing in-app Icon Request feature remains the fallback for applications that cannot be resolved safely from upstream mappings.
 
 # Install
 You can [download icon pack](https://www.pling.com/p/1662847/) directly from the Android browser or download on PC and send to phone via KDE Connect/Send Anywhere/Android File Transfer or adb.
